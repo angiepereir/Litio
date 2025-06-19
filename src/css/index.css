@@ -1,1 +1,23 @@
-/*hola*/
+*{
+   
+    overflow: hidden;
+
+}
+h1.h3{
+    height: auto;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+
+}
+.parallax img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      transform: translateY(0);
+      transition: transform 0.1s ease-out;
+      z-index: -1;}
