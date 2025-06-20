@@ -2,27 +2,60 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 /*header*/
 
+
 /*nav*/
+.litio-navbar{
+    background-color: rgb(214, 226, 43);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: fixed;
+    top:0;
+    right: 0;
+    height: 100vh;
+    width: 80px;
+    
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 /*main*/
-
+body{
+   margin-right: 80px;
+}
 /*container-top*/
 /*container-info*/
 
+
+/*parte central de la pagina, carrusel y parallax*/
 .container-mid-photos{
     background-color: blue;
+    height: 38rem;
 }
 
 .images-box{
+    position: relative;
     max-width: auto;
     display: flex;
     overflow-x: auto;
     gap: 1rem;
     scroll-snap-type: x mandatory;
     padding: 1rem;
+    overflow-x: auto;
+}
+
+.carousel{
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 500%;
 }
 
 .carousel img{
@@ -31,5 +64,43 @@
     max-width: 300px;
     height: 300px;
     object-fit: cover;
+    scroll-snap-align: center;
+    flex-shrink: 0;
 
+}
+@media (max-width:600px){
+    .carousel img{
+        max-width: 90%;
+        height: 180px;
+    }
+}
+
+button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(red, green, blue, alpha);
+    color: aliceblue;
+    border: none;
+    
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#prev{ left: 10px;}
+#next{right: 10px;}
+
+
+/*parallax de menas*/
+.container-where-from{
+    background-color: chartreuse;
+}
+
+/*.column-scroll{}*/
+
+.elevator img{
+    width: 100%;
+    max-width: 40rem;
+    height: 100%;
+    max-height: 40rem;
 }
