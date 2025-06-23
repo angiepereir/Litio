@@ -1,23 +1,96 @@
-*{
-   
-    overflow: hidden;
-
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Muy importante: queda detrás de todo */
+  background-color: #0d0d25; /* Puedes cambiar el fondo aquí si quieres */
 }
-h1.h3{
+#intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d25;
+  overflow: hidden;
+}
+
+.welcome {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#enter-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #b2c4ff, #dcd6f7, #b3e5fc);
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+#enter-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #dcd6f7, #b2c4ff, #b3e5fc);
+}
+
+/* Título principal */
+.main-title {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2.8em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(90deg, #b2c4ff, #dcd6f7, #b3e5fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  animation: fadeSlideDown 1.5s ease forwards;
+  opacity: 0;
+}
+.intro-gif {
+    width: 400px;
     height: auto;
-    background-color: aliceblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
 }
-.parallax img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      transform: translateY(0);
-      transition: transform 0.1s ease-out;
-      z-index: -1;}
+@keyframes float {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+#back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #b3e5fc, #dcd6f7);
+  color: #000;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+#back-button:hover {
+  transform: scale(1.05);
+}
