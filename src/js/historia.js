@@ -1,29 +1,32 @@
-const slides = document.querySelectorAll('.slide');
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-let current = 0;
+let next = document.querySelector('.next');
+let prev = document.querySelector('.prev');
+let slider = document.querySelector('.slider');
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.style.display = i === index ? 'block' : 'none';
-  });
-}
+next.addEventListener('click', function(){
+  let slides = document.querySelectorAll('.slides');
+  slider.appendChild(slides[0]);
+})
 
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-}
+prev.addEventListener('click', function(){
+  let slides = document.querySelectorAll('.slides');
+  slider.prepend(slides[slides.length - 1]);
+})
 
-function prevSlide() {
-  current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
-}
-
-next.addEventListener('click', nextSlide);
-prev.addEventListener('click', prevSlide);
-
-// Mostrar el primer slide
-showSlide(current);
-
-// Cambiar automáticamente cada 8 segundos
-setInterval(nextSlide, 8000);
+// Control con teclas del teclado
+document.addEventListener('keydown', function(event) {
+    // Tecla flecha izquierda o 'A' para anterior
+    if (event.key === 'ArrowLeft' || event.key.toLowerCase() === 'a') {
+        document.querySelector('.prev').click();
+    }
+    
+    // Tecla flecha derecha o 'D' para siguiente
+    if (event.key === 'ArrowRight' || event.key.toLowerCase() === 'd') {
+        document.querySelector('.next').click();
+    }
+    
+    // Tecla Espacio para siguiente (opcional)
+    if (event.key === ' ') {
+        event.preventDefault(); // Evita el scroll de la página
+        document.querySelector('.next').click();
+    }
+});
