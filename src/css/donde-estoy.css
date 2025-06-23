@@ -3,45 +3,143 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /*header*/
 
 
+
+
 /*nav*/
-.litio-navbar{
-    background-color: rgb(214, 226, 43);
+.navbar {
+    background: #0d0d25;
+    color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     position: fixed;
-    top:0;
+    top: 0;
     right: 0;
     height: 100vh;
     width: 80px;
-    
+    padding: 1rem;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    z-index: 1000;
 }
 
-ul{
+.logo a {
+    display: fixed;
+    gap: 1rem;
+    padding: 1rem;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.navbar:hover {
+    width: 180px;
+}
+
+.menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: "Roboto", sans-serif;
+    background-color: transparent;
 }
 
-/*main*/
-body{
-   margin-right: 80px;
+.menu a {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.3s, color 0.3s;
 }
+
+.menu a:hover {
+    background-color: #636c7d;
+    color: #111;
+    border-radius: 8px;
+}
+
+.menu a i {
+    min-width: 1px;
+    text-align: center;
+    font-size: 1.5rem;
+    display: flex;
+
+}
+
+.menu a span {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.menu:hover a span {
+    opacity: 1;
+}
+
+/* ESTILO PARA EL LINK ACTIVO */
+.menu a.activo {
+    background-color: #355d9b;
+    color: #111;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* 🎯 MEDIA QUERY para móviles */
+@media (max-width: 768px) {
+    .barra-lateral {
+        transform: translateX(100%);
+        width: 180px;
+    }
+
+    .barra-lateral.mostrar {
+        transform: translateX(0);
+    }
+
+    .barra-lateral:hover {
+        width: 180px;
+    }
+
+    .barra-lateral span {
+        opacity: 1;
+        /* siempre visible en móvil */
+    }
+
+    .toggle-nav {
+        display: block;
+    }
+}
+
+
+/*main*/
+body {
+    margin-right: 95px;
+    background-color: #909bc9;
+}
+
 /*container-top*/
 /*container-info*/
 
 
 /*parte central de la pagina, carrusel y parallax*/
-.container-mid-photos{
+.container-mid-photos {
     background-color: blue;
     height: 38rem;
 }
 
-.images-box{
+.images-box {
     position: relative;
     max-width: auto;
     display: flex;
@@ -52,13 +150,13 @@ body{
     overflow-x: auto;
 }
 
-.carousel{
+.carousel {
     display: flex;
     transition: transform 0.5s ease;
     width: 500%;
 }
 
-.carousel img{
+.carousel img {
     flex: 0 0 auto;
     width: 100%;
     max-width: 300px;
@@ -68,37 +166,43 @@ body{
     flex-shrink: 0;
 
 }
-@media (max-width:600px){
-    .carousel img{
+
+@media (max-width:600px) {
+    .carousel img {
         max-width: 90%;
         height: 180px;
     }
 }
 
-button{
+button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(red, green, blue, alpha);
     color: aliceblue;
     border: none;
-    
+
     font-size: 1rem;
     cursor: pointer;
 }
 
-#prev{ left: 10px;}
-#next{right: 10px;}
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
 
 
 /*parallax de menas*/
-.container-where-from{
+.container-where-from {
     background-color: chartreuse;
 }
 
 /*.column-scroll{}*/
 
-.elevator img{
+.elevator img {
     width: 100%;
     max-width: 40rem;
     height: 100%;

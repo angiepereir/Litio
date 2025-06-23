@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/css/donde-estoy.css">
+
+    <!-- simbolos navbar-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!--fuentes tipografia-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Happy+Monkey&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Happy+Monkey&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
-    <title>UTI(LI)DADES</title>
+    <title>DondeEstoy</title>
 </head>
+
 <body>
-    <header>
-        <nav class="litio-navbar">
-            <div class="navbar-container">
-                <a href="https://celiami.github.io/periodic-table-project/#table-section" class="back-arrow" title="¿Volver a la tabla?">
-                    <i class="arrow-left"></i>
-                </a>
-                <div class="litio-tittle-nav">
-                    3.Litio
-                </div>
-            </div>
+    <header class="navbar">
+        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section" class="back-arrow"
+                title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3.Litio</a></div>
+
+        <!-- Botón hamburguesa flotante solo visible en móvil 
+        <button class="toggle-nav" id="toggleNav">
+            <i class="fa-solid fa-bars"></i>
+        </button>-->
+
+        <nav class="menu">
             <ul>
-                <li><a href="/index.html">index/como soy </a></li>
-                <li><a href="/pages/donde-estoy.html"> uti(li)dades</a></li>
-                <li><a href="/pages/historia.html">Historia</a></li>
-                <li><a href="/pages/jugamos.html">jugamos</a></li>
-                <li><a href="/pages/creadoras.html">creadoras</a></li>
+                <li><a href="/index.html" target="_blank"><i class="fa-solid fa-circle-question"></i><span> Como Soy
+                        </span></a></li>
+                <li><a href="/pages/donde-estoy.html" target="_blank" class="activo"><i
+                            class="fa-solid fa-map-location-dot"></i> <span> Donde Estoy </span></a></li>
+                <li><a href="/pages/historia.html" target="_blank"><i class="fa-solid fa-book"></i> <span>Historia
+                        </span></a></li>
+                <li><a href="/pages/jugamos.html" target="_blank"><i class="fa-solid fa-gamepad"></i><span> Juego
+                        </span></a></li>
+                <li><a href="/pages/creadoras.html" target="_blank"><i class="fa-solid fa-users"></i><span> Creadoras
+                        </span></a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="container-top">
-            <article class="">
-                <h1> Litio? Te enseño sus uti LI dades </h1>
+            <article class="tittle">
+                <h1 class="large grid centered square-grid text-xl">
+                    <span>L</span>
+                    <span>I</span>
+                    <span>T</span>
+                    <span>I</span>
+                    <span>O</span>
+                </h1>
+                <br>
+                <h2> Te enseño sus uti<span>(LI)</span>dades </h2>
             </article>
         </section>
         <section class="container-info">
-            <article class="">
+            <article class="text-intro">
                 <div>
-                    <h2> Quieres saber de donde se extrae el litio que has venido conociendo? Sientate que te lo cuento</h2>
+                    <br>
+                    <h2> Quieres saber de donde se extrae el litio que has venido conociendo? Sientate que te lo cuento
+                    </h2>
+                </div>
+                <div>
+                    <br>
+                    <p> El litio se encuentra en la naturaleza de muchas formas, pero solo unos pocos minerales lo
+                        contienen en cantidades comercialmente útiles. También se presenta en salmueras, aguas termales
+                        y agua de mar, aunque en concentraciones muy variables que oscilan entre 20 y 65 ppm (partes por
+                        millón).</p>
+                    <br>
                 </div>
             </article>
         </section>
@@ -115,4 +148,5 @@
     </main>
     <script src="/src/js/donde-estoy.js"></script>
 </body>
+
 </html>
