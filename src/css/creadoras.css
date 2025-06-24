@@ -175,4 +175,30 @@ body {
       50% { transform: translateY(-20px); }
     }
   
+.headline-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    #40ffaa,
+    #4079ff,
+    #40ffaa,
+    #4079ff,
+    #40ffaa
+  );
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent; 
+  animation: gradientMove 5s linear infinite;
+}
 
+@keyframes gradientMove {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
