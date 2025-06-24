@@ -1,3 +1,4 @@
+
 let cards = document.querySelectorAll(".card");
 
       let stackArea = document.querySelector(".stack-area");
@@ -35,6 +36,4 @@ let cards = document.querySelectorAll(".card");
         }
         rotateCards();
       });
-
-
 
