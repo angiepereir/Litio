@@ -25,14 +25,9 @@
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section" class="back-arrow"
-                title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3.Litio</a></div>
-
-        <!-- Botón hamburguesa flotante solo visible en móvil 
-        <button class="toggle-nav" id="toggleNav">
-            <i class="fa-solid fa-bars"></i>
-        </button>-->
+    <header class="navbar" id="navbar">
+        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section"  target="_blank" class="back-arrow"
+                title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3. Litio</a></div>
 
         <nav class="menu">
             <ul>
@@ -49,6 +44,14 @@
             </ul>
         </nav>
     </header>
+
+<!-- Botón hamburguesa para mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <main>
         <section class="container-top">
             <article class="tittle">
