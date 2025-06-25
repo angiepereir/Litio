@@ -1,1 +1,78 @@
-<!--hola-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Trivia</title>
+    <link rel="stylesheet" href="../src/css/jugamos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="contenedor-principal">
+    <h1 class="titulo">Trivia: los tres reinos de Litio</h1>
+    <!-- Escudos centrados -->
+    <section class="reinos">
+        <div class="reino">
+        <a href="#quimico">
+            <img src="../picture/escudo.png" alt="Escudo del Reino Químico" />
+            <h2 class="reino-quimico">Reino Químico</h2>
+        </a>
+        </div>
+        <div class="reino">
+        <a href="#natural">
+            <img src="../picture/escudo.png" alt="Escudo del Reino Natural" />
+            <h2 class="reino-natural">Reino Natural</h2>
+        </a>
+        </div>
+        <div class="reino">
+        <a href="#tecnologico">
+        <img src="../picture/escudo.png" alt="Escudo del Reino Tecnológico" />
+        <h2 class="reino-tecnologico">Reino Tecnológico</h2>
+        </a>
+        </div>
+    </section>
+
+    <!-- Secciones de preguntas -->
+    <section id="quimico" class="preguntas">
+      <div class="pregunta-card">
+        <img src="../picture/quimica.png" alt="Imagen 1" />
+        <h3>¿Cuál es el símbolo químico del litio?</h3>
+        <ol class="opciones">
+          <li class="respuestaIncorrecta">A) Lm</li>
+          <li class="respuestaCorrecta">B) Li</li> <!--respeusta correcta-->
+          <li class="respuestaIncorrecta">C) Lt</li> 
+          <li class="respuestaIncorrecta">D) Le</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="natural" class="preguntas">
+      <div class="pregunta-card">
+        <img src="../picture/quimicaverde2.png" alt="Imagen de pregunta" />
+        <h3>¿En qué región se encuentra el "Triángulo del Litio"?</h3>
+        <ol class="opciones">
+          <li class="respuestaIncorrecta">A) Europa Oriental</li>
+          <li class="respuestaIncorrecta">B) Asia Central</li>
+          <li class="respuestaCorrecta">C) Sudamérica</li> <!--respeusta correcta-->
+          <li class="respuestaIncorrecta">D) África Austral</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="tecnologico" class="preguntas">
+      <div class="pregunta-card">
+        <img src="../picture/naturaleza.png" alt="Imagen de tecnologia"/>
+        <h3>¿Para qué se usa principalmente el litio hoy en día?</h3>
+        <ol class="opciones">
+          <li class="respuestaIncorrecta">A) Pinturas</li>
+          <li class="respuestaCorrecta">B) Baterías recargables</li> <!--respeusta correcta-->
+          <li class="respuestaIncorrecta">C) Combustibles fósiles</li>
+          <li class="respuestaIncorrecta">D) Fertilizantes</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+  <script src="../src/js/jugamos.js"></script>
+</body>
+</html>
