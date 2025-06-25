@@ -6,8 +6,35 @@
     <title>Creadoras</title>
     <script src="/src/js/creadoras.js" defer></script>
     <link rel="stylesheet" href="/src/css/creadoras.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+  <header class="navbar" id="navbar">
+        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section" target="_blank"
+                class="back-arrow" title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3. Litio</a></div>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="/index.html" target="_blank"><i class="fa-solid fa-circle-question"></i><span> Como Soy
+                        </span></a></li>
+                <li><a href="/pages/donde-estoy.html" target="_blank"><i
+                            class="fa-solid fa-map-location-dot"></i> <span> Donde Estoy </span></a></li>
+                <li><a href="/pages/historia.html" target="_blank"><i class="fa-solid fa-book"></i> <span>Historia
+                        </span></a></li>
+                <li><a href="/pages/jugamos.html" target="_blank"><i class="fa-solid fa-gamepad"></i><span> Juego
+                        </span></a></li>
+                <li><a href="/pages/creadoras.html" target="_blank" class="activo"><i class="fa-solid fa-users"></i><span> Creadoras
+                        </span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Botón hamburguesa para mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
   <div class="headline-section">
     <div class="headline-text">🚀 Breaking News: AI Changes the World</div>
   </div>
@@ -23,16 +50,16 @@
   <div class="headline-section">
     <div class="headline-text">🎨 Creativity Explodes in 2025</div>
   </div>
-
-<div class="stack-area">
+    <main>
+      <div class="stack-area">
     <div class="left">
         <div id="title" class="title">Our Features</div>
         <div class="sub-title">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente qui
             quis, facere, cupiditate, doloremque natus ex perspiciatis ratione hic
             corrupti adipisci ea doloribus!
-            <br />
-            <button>See More Details</button>
+            <br>
+            <button type="">See More Details</button>
         </div>
     </div>
     <div class="right">
@@ -54,23 +81,7 @@
         </div>
     </div>
 </div>
-<main></main>
-
-        <!--<section>
-            <article class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="./img/Tabitha.jpg" alt="Retrato">
-                        <h2>Sierra circular</h2>
-                    </div>
-                    <div class="card-back">
-                        <p class="card-title"></p>
-                        <p class="contribution"></p>
-                    </div>
-                </div>
-            </article>
-        </section>--!-->
-    </main>
+</main>
 </body>
 </html>
 
