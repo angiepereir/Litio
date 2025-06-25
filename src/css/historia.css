@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .container{
   position: absolute;
   width: 100vw;
@@ -11,12 +12,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('/img/fondoo.png'); /* Ajusta la ruta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
 }
 .slider{
   position: absolute;
   inset: 80px 200px 80px 80px;
-  background: #ccc;
 }
 .slider .slides{
   position: absolute;
