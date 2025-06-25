@@ -21,13 +21,14 @@
         href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Happy+Monkey&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
+    <link rel="icon" type="image/icon" href="/public/favicon.ico">
     <title>DondeEstoy</title>
 </head>
 
 <body>
     <header class="navbar" id="navbar">
-        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section"  target="_blank" class="back-arrow"
-                title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3. Litio</a></div>
+        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section" target="_blank"
+                class="back-arrow" title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3. Litio</a></div>
 
         <nav class="menu">
             <ul>
@@ -45,7 +46,7 @@
         </nav>
     </header>
 
-<!-- Botón hamburguesa para mobile -->
+    <!-- Botón hamburguesa para mobile -->
     <div class="hamburger" onclick="toggleMenu()">
         <span></span>
         <span></span>
@@ -54,8 +55,8 @@
 
     <main>
         <section class="container-top">
-            <article class="tittle">
-                <h1 class="large grid centered square-grid text-xl">
+            <div class="tittle">
+                <h1 class="titulo">
                     <span>L</span>
                     <span>I</span>
                     <span>T</span>
@@ -63,12 +64,12 @@
                     <span>O</span>
                 </h1>
                 <br>
-                <h2> Te enseño sus uti<span>(LI)</span>dades </h2>
-            </article>
+            </div>
         </section>
         <section class="container-info">
             <article class="text-intro">
                 <div>
+                    <h2> Te enseño sus uti<span>(LI)</span>dades </h2>
                     <br>
                     <h2> Quieres saber de donde se extrae el litio que has venido conociendo? Sientate que te lo cuento
                     </h2>
@@ -86,19 +87,20 @@
         <section class="container-mid-photos">
             <article class="images-box">
                 <div class="carousel">
-                    <img src="../public/donde-estoy-images/saltflatslitio.webp" alt="Salt Flat1">
+                    <img src="../public/donde-estoy-images/saltflatslitio.webp" alt="Isla Incahuasi, Sur de Bolivia">
                 </div>
                 <div class="carousel">
-                    <img src="../public/donde-estoy-images/saltflatslitio2.webp" alt="Salt Flat2">
+                    <img src="../public/donde-estoy-images/saltflatslitio2.webp"
+                        alt="Chile, Argentina y Bolivia, triangulo del litio">
                 </div>
                 <div class="carousel">
-                    <img src="../public/donde-estoy-images/saltflatslitio3.webp" alt="Salt Flat3">
+                    <img src="../public/donde-estoy-images/saltflatslitio3.webp" alt="Salar de Uyuni">
                 </div>
                 <div class="carousel">
-                    <img src="../public/donde-estoy-images/saltflatslitio4.webp" alt="Salt Flat4">
+                    <img src="../public/donde-estoy-images/saltflatslitio4.webp" alt="Desperdicios en la extracción">
                 </div>
                 <div class="carousel">
-                    <img src="../public/donde-estoy-images/saltflats5.webp" alt="Salt Flat5">
+                    <img src="../public/donde-estoy-images/saltflats5.webp" alt="Piletones de evaporación solar">
                 </div>
                 <div>
                     <button id="previous">(</button>
@@ -118,30 +120,55 @@
                 <br><br>
             </div>
         </section>
-        <section class="container-where-from">
-            <article class="column-scroll">
+        <section class="container-column-scroll">
+            <article class="parallax-scroll page1">
                 <div class="elevator">
-                    imagenes parallax scroll de las menas de litio <br>
-                    <img src="../public/donde-estoy-images/litioenmineral.webp" alt="">
+                    <!--imagenes parallax scroll de las menas de litio-->
+                    <img src="../public/donde-estoy-images/litioenmineral.webp" alt="Mineral Mena de Litio">
                 </div>
-                <div class="elevator">
-                    <img src="../public/donde-estoy-images/espodumena.webp" alt="">
+                <div class="elevator-text">
+                <p class="parrallax-text" id="mineral">Mineral Mena de Litio</p>
                 </div>
+            </article>
+            <article class="parallax-scroll page2">
                 <div class="elevator">
-                    <img src="../public/donde-estoy-images/kuncita.webp" alt="">
+                    <img src="../public/donde-estoy-images/espodumena.webp" alt="Espodumena">
                 </div>
-                <div class="elevator">
-                    <img src="../public/donde-estoy-images/Lepidolita.webp" alt="">
+                <div class="elevator-text">
+                <p p class="parrallax-text" id="espodumena">Mineral Mena de litio </p>
                 </div>
+            </article>
+            <article class="parallax-scroll page3">
                 <div class="elevator">
-                    <img src="../public/donde-estoy-images/petalita.webp" alt="">
+                    <img src="../public/donde-estoy-images/kuncita.webp" alt="Kuncita">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="kuncita">Mineral Mena de litio </p>
+                </div>
+            </article>
+            <article class="parallax-scroll page4">
+                <div class="elevator">
+                    <img src="../public/donde-estoy-images/Lepidolita.webp" alt="Lepidolita">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="lepidolita">Mineral Mena de litio </p>
+                </div>
+            </article>
+            <article class="parallax-scroll page5">
+                <div class="elevator">
+                    <img src="../public/donde-estoy-images/petalita.webp" alt="Petalita">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="petalita">Mineral Mena de litio </p>
                 </div>
             </article>
         </section>
         <section class="container-how-to">
             <article class="extraction">
                 <div>
+                    <br>
                     poner video de la forma en como se extrae, explicacion e imagenes.
+                    <br>
                 </div>
             </article>
         </section>
