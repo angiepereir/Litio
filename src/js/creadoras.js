@@ -37,3 +37,28 @@ let cards = document.querySelectorAll(".card");
         rotateCards();
       });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const titleElement = document.getElementById("title");
+    const cards = document.querySelectorAll(".card");
+    const cardPositions = [];
+
+    // Store the positions of each card
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        cardPositions.push(rect.top + window.scrollY); // Get the absolute position
+    });
+
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY + window.innerHeight / 2; // Middle of the viewport
+
+        // Check which card is currently in view
+        for (let i = 0; i < cardPositions.length; i++) {
+            if (scrollPosition >= cardPositions[i] && 
+                (i === cardPositions.length - 1 || scrollPosition < cardPositions[i + 1])) {
+                // Update the title based on the current card
+                titleElement.textContent = cards[i].getAttribute("data-title");
+                break;
+            }
+        }
+    });
+});
