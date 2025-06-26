@@ -1,1 +1,234 @@
-<!--hola-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/donde-estoy.css">
+
+    <!-- simbolos navbar-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!--fuentes tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Happy+Monkey&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/icon" href="/public/favicon.ico">
+    <title>DondeEstoy</title>
+</head>
+
+<body>
+    <header class="navbar" id="navbar">
+        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section" target="_blank"
+                class="back-arrow" title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3. Litio</a></div>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="/index.html" target="_blank"><i class="fa-solid fa-circle-question"></i><span> Como Soy
+                        </span></a></li>
+                <li><a href="/pages/donde-estoy.html" target="_blank" class="activo"><i
+                            class="fa-solid fa-map-location-dot"></i> <span> Donde Estoy </span></a></li>
+                <li><a href="/pages/historia.html" target="_blank"><i class="fa-solid fa-book"></i> <span>Historia
+                        </span></a></li>
+                <li><a href="/pages/jugamos.html" target="_blank"><i class="fa-solid fa-gamepad"></i><span> Juego
+                        </span></a></li>
+                <li><a href="/pages/creadoras.html" target="_blank"><i class="fa-solid fa-users"></i><span> Creadoras
+                        </span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Botón hamburguesa para mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <main>
+        <section class="container-top">
+            <div class="tittle">
+                <h1 class="titulo">
+                    <span>L</span>
+                    <span>I</span>
+                    <span>T</span>
+                    <span>I</span>
+                    <span>O</span>
+                </h1>
+                <br>
+            </div>
+        </section>
+        <section class="container-info">
+            <article class="text-intro">
+                <div>
+                    <h2> Te enseño sus uti<span>(LI)</span>dades </h2>
+                    <br>
+                    <h2> Quieres saber de donde se extrae el litio que has venido conociendo? Sientate que te lo cuento
+                    </h2>
+                </div>
+                <div>
+                    <br>
+                    <p> El litio se encuentra en la naturaleza de muchas formas, pero solo unos pocos minerales lo
+                        contienen en cantidades comercialmente útiles. También se presenta en salmueras, aguas termales
+                        y agua de mar, aunque en concentraciones muy variables que oscilan entre 20 y 65 ppm (partes por
+                        millón).</p>
+                    <br>
+                </div>
+            </article>
+        </section>
+        <section class="container-mid-photos">
+            <article class="images-box">
+                <div class="carousel">
+                    <img src="../public/donde-estoy-images/saltflatslitio.webp" alt="Isla Incahuasi, Sur de Bolivia">
+                </div>
+                <div class="carousel">
+                    <img src="../public/donde-estoy-images/saltflatslitio2.webp"
+                        alt="Chile, Argentina y Bolivia, triangulo del litio">
+                </div>
+                <div class="carousel">
+                    <img src="../public/donde-estoy-images/saltflatslitio3.webp" alt="Salar de Uyuni">
+                </div>
+                <div class="carousel">
+                    <img src="../public/donde-estoy-images/saltflatslitio4.webp" alt="Desperdicios en la extracción">
+                </div>
+                <div class="carousel">
+                    <img src="../public/donde-estoy-images/saltflats5.webp" alt="Piletones de evaporación solar">
+                </div>
+                <div>
+                    <button id="previous">(</button>
+                    <button id="next">)</button>
+                </div>
+            </article>
+            <article class="info-text">
+                <div class="img-info">
+                    explicacion imagenes y triangulo del litio
+                </div>
+            </article>
+        </section>
+        <section class="mid-inner-info">
+            <div class="text-inner">
+                <br><br>
+                hola aqui va un espacio de texto para separar ambos movimientos en la pagina y no marearse
+                <br><br>
+            </div>
+        </section>
+        <section class="container-column-scroll">
+            <article class="parallax-scroll page1">
+                <div class="elevator">
+                    <!--imagenes parallax scroll de las menas de litio-->
+                    <img src="../public/donde-estoy-images/litioenmineral.webp" alt="Mineral Mena de Litio">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="mineral">Mineral Mena de Litio</p>
+                </div>
+            </article>
+            <article class="parallax-scroll page2">
+                <div class="elevator">
+                    <img src="../public/donde-estoy-images/espodumena.webp" alt="Espodumena">
+                </div>
+                <div class="elevator-text">
+                <p p class="parrallax-text" id="espodumena">Mineral Mena de litio </p>
+                </div>
+            </article>
+            <article class="parallax-scroll page3">
+                <div class="elevator">
+                    <img src="../public/donde-estoy-images/kuncita.webp" alt="Kuncita">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="kuncita">Mineral Mena de litio </p>
+                </div>
+            </article>
+            <article class="parallax-scroll page4">
+                <div class="elevator">
+                    <img src="../public/donde-estoy-images/Lepidolita.webp" alt="Lepidolita">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="lepidolita">Mineral Mena de litio </p>
+                </div>
+            </article>
+            <article class="parallax-scroll page5">
+                <div class="elevator">
+                    <img src="../public/donde-estoy-images/petalita.webp" alt="Petalita">
+                </div>
+                <div class="elevator-text">
+                <p class="parrallax-text" id="petalita">Mineral Mena de litio </p>
+                </div>
+            </article>
+        </section>
+        <section class="container-how-to">
+            <article class="extraction">
+                <div>
+                    <br>
+                    poner video de la forma en como se extrae, explicacion e imagenes.
+                    <br>
+                </div>
+            </article>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Sobre el Litio</h3>
+                    <p>El litio es un mineral estratégico clave para la transición energética y el desarrollo de tecnologías sostenibles como baterías recargables, vehículos eléctricos y almacenamiento de energía.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">💼</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Reserva del litio</a></li>
+                        <li><a href="#">Procesamientos</a></li>
+                        <li><a href="#">Aplicaciones</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Aplicaciones del Litio</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Baterías de Litio</a></li>
+                        <li><a href="#">Vehículos Eléctricos</a></li>
+                        <li><a href="#">Almacenamiento Energético</a></li>
+                        <li><a href="#">Tecnología Médica</a></li>
+                        <li><a href="#">Industria del Vidrio</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Proyecto Litio. Todos los derechos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Uso</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/src/js/donde-estoy.js"></script>
+</body>
+
+</html>
