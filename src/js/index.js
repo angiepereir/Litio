@@ -51,3 +51,4 @@ particlesJS("particles-js", {
   document.getElementById("main-content").style.display = "none";
   document.getElementById("intro-screen").style.display = "flex";
 });
+
