@@ -411,6 +411,12 @@ button #previous{
 .page4 {--dark: 75%}
 .page5 {--dark: 100%}
 
+/*mid-inner-info*/
+.text-inner p{
+    font-family: "Roboto", sans-serif;
+}
+
+
 /*.column-scroll{}*/
 .elevator{
 flex: 1;
