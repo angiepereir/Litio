@@ -325,12 +325,14 @@ body {
     margin: 0.3rem;
     background-color: #919cca;
 }
-h1 span{
+/*
+.titulo h1 span{
+    display: flex;
     font-family: "Happy Monkey", system-ui;
     font-size: larger;
     font-weight: bold;
     margin: 1rem;
-    text-align: center;
+    justify-content: center;
 }
 /*container-top*/
 /*container-info*/
@@ -396,6 +398,35 @@ button #previous{
 
 #next {
     right: 10px;
+}
+
+/*titulo*/
+
+.tittle h1{
+    display: flex;
+    justify-content: center ;
+    align-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.titulo span{
+    font-family: "Happy Monkey", system-ui;
+    padding: 1rem;
+    font-size: 90px;
+}
+
+/*intro*/
+
+#tittle2{
+    display: flex;
+    justify-content: center;
+}
+
+.text-intro h2, p{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 
