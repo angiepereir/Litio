@@ -38,54 +38,55 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+js 
+/*nav*/
 
+function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    const hamburger = document.querySelector(".hamburger");
 
-
-/*document.addEventListener("DOMContentLoaded",()=> {
-    const correctas = document.querySelectorAll(".reapuestaCorrecta")
-    correctas.forEach((opcion)=> {
-    opcion.addEventListener("click", ()=> {
-    Swal.fire({
-    title: '¡Correcto!',
-    text: 'Has elegido bien 🔋',
-    icon: 'success', 
-    confirmButtonText: 'Continuar'
-});
-        })
-    })
-}) 
-
-document.addEventListener("DOMContentLoaded",()=> {
-    const incorrectas = document.querySelectorAll(".reapuestaIncorrecta")
-    incorrectas.forEach((opcion)=> {
-    opcion.addEventListener("click", ()=> {
-    Swal.fire({
-    title: '¡Incorrecto!',
-    text: 'Intenta otra vez 😢',
-    icon: 'error',
-    confirmButtonText: 'Continuar'
-});
-        })
-    })
-}) 
-
-
-/*function seleccionarRespuesta(elemento, esCorrecta) {
-    if (esCorrecta) {
-        alert("¡Correcto! 🎉" );
-    }
-    else {
-        alert("Incorrecto ❌");
-    }
+    navbar.classList.toggle("active");
+    hamburger.classList.toggle("active");
 }
 
-function seleccionarRespuesta(elemento, esCorrecta){
-    if(esCorrecta){
-        elemento.style.backgroundColor = "green";
-        alert("¡Correcto! 🎉");
+// Cerrar menú al hacer clic en un enlace (solo en mobile)
+document.querySelectorAll(".menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+        const navbar = document.getElementById("navbar");
+        const hamburger = document.querySelector(".hamburger");
+
+        if (window.innerWidth <= 768) {
+            navbar.classList.remove("active");
+            hamburger.classList.remove("active");
+        }
+    });
+});
+
+// Reset al cambiar tamaño de ventana
+window.addEventListener("resize", () => {
+    const navbar = document.getElementById("navbar");
+    const hamburger = document.querySelector(".hamburger");
+
+    if (window.innerWidth > 768) {
+        navbar.classList.remove("active");
+        hamburger.classList.remove("active");
     }
-    else {
-        elemento.style.backgroundColor = "red";
-        alert("Incorrecto ❌");
+});
+
+// Cerrar menú al hacer clic fuera (solo mobile)
+document.addEventListener("click", (e) => {
+    const navbar = document.getElementById("navbar");
+    const hamburger = document.querySelector(".hamburger");
+    const logo = document.querySelector(".logo");
+
+    if (
+        window.innerWidth <= 768 &&
+        navbar.classList.contains("active") &&
+        !navbar.contains(e.target) &&
+        !hamburger.contains(e.target) &&
+        !logo.contains(e.target)
+    ) {
+        navbar.classList.remove("active");
+        hamburger.classList.remove("active");
     }
-    }*/
+});
