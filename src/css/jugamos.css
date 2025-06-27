@@ -4,19 +4,20 @@
 /*¿cambiar de imagenes?*/
 /*poner color segun el reino a las letras de las listas*/
 /*averiguar y ver como embellecer el título*/
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #061038;
     color: white;
+    background: -webkit-radial-gradient(#636c7d, #0d0d25);
 }
 
 .titulo {
     text-align: center;
     margin-top: 30px;
     font-family: 'Happy Monkey', cursive;
-    font-size: 50px;
+    font-size: 70px;
 }
 
 .reinos {
@@ -25,6 +26,7 @@ body {
   align-items: center;
   height: 80vh;
   gap: 60px;
+  
 }
 
 .reino {
@@ -40,29 +42,72 @@ body {
   margin-top: 10px;
 }
 
-.reino-tecnologico{
-    color: #fafbfe;
+.reinos-nombres {
+    background-color: #f9fbf9;
+    width: 320px;
+    padding: 15px 40px;
+    margin:auto;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
     font-size: 27px;
     font-family: "Happy Monkey";
-    
-
+}
+.reinos-nombres::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    left: 0;
+    top:0;
+    border-radius: 10px;
+}
+/*glow*/
+.reinos-nombres::before {
+content: "";
+background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+);
+position: absolute;
+top: -2px;
+left: -2px;
+background-size: 600%;
+z-index: -1;
+width: calc(100% + 4px);
+height: calc(100% + 4px);
+filter: blur(8px);
+animation: glowing 20s linear infinite;
+transition: opacity .3s ease-in-out;
+border-radius: 10px;
+opacity: 1;
 }
 
-.reino-natural{
-    color: #f9fbf9;
-    font-size: 27px;
-    font-family: "Happy Monkey";
-    text-decoration: none;
-    
-    
+@keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
 }
 
-.reino-quimico{
-    color: #fffdff;
-    font-size: 27px;
-    font-family: "Happy Monkey";
-    
+.reinos-nombres::before {
+    opacity: 1;
 }
+
+.reinos-nombres:active:after {
+    background: transparent;
+}
+
+.reinos-nombres:active {
+    color: #000;
+}
+
 
 .reino a {
     text-decoration: none;
@@ -427,7 +472,6 @@ body {
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0d0d25;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
