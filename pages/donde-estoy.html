@@ -21,6 +21,9 @@
         href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Happy+Monkey&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
+<!--scrollmagic-->
+
+
     <link rel="icon" type="image/icon" href="/public/favicon.ico">
     <title>DondeEstoy</title>
 </head>
@@ -71,8 +74,6 @@
         <section class="container-info">
             <article class="text-intro">
                 <div>
-                    <br><br><br><br><br>
-                    <h2 id="tittle2"> Te enseño sus uti<span>(LI)</span>dades </h2>
                     <br><br><br><br>
                     <h2> Quieres saber de donde se extrae el litio que has venido conociendo? Sientate que te lo cuento
                     </h2>
@@ -89,30 +90,30 @@
         </section>
         <section class="container-mid-photos">
             <article class="images-box">
-                <div class="carousel">
+                <div class="carousel" data-speed="0.3">
                     <img src="../public/donde-estoy-images/saltflatslitio.webp" alt="Isla Incahuasi, Sur de Bolivia">
                 </div>
-                <div class="carousel">
+                <div class="carousel" data-speed="0.4">
                     <img src="../public/donde-estoy-images/saltflatslitio2.webp"
                         alt="Chile, Argentina y Bolivia, triangulo del litio">
                 </div>
-                <div class="carousel">
+                <div class="carousel" data-speed="0.5">
                     <img src="../public/donde-estoy-images/saltflatslitio3.webp" alt="Salar de Uyuni">
                 </div>
-                <div class="carousel">
+                <div class="carousel" data-speed="0.6">
                     <img src="../public/donde-estoy-images/saltflatslitio4.webp" alt="Desperdicios en la extracción">
                 </div>
-                <div class="carousel">
+                <div class="carousel" data-speed="0.7">
                     <img src="../public/donde-estoy-images/saltflats5.webp" alt="Piletones de evaporación solar">
                 </div>
-                <div>
+                <!-- <div>
                     <button id="previous">(</button>
                     <button id="next">)</button>
-                </div>
+                </div>-->
             </article>
             <article class="info-text">
                 <div class="img-info">
-                    explicacion imagenes y triangulo del litio
+                    <p></p>
                 </div>
             </article>
         </section>
@@ -120,7 +121,7 @@
             <div class="text-inner">
                 <br><br>
                 <p>Este elemento puede encontrarse de muy diversas formas, como ser en concentraciones anómalas de pegmatitas; en ambientes sedimentarios asociados con arcilla; en zonas de alteración hidrotermal asociados a minerales a bajas como a altas temperaturas; en evaporitas no marinas; en salmueras de ambientes desérticos; en aguas salinas o salmueras asociadas a yacimientos de petróleo; en yacimientos de boro; berilio, flúor, manganeso y posiblemente fosfato; en ambientes lacustre asociados a silicatos de magnesio; en aguas, plantas y suelos de ambientes desérticos; en rocas sedimentarias ricas en hierro.
-                <br><br>
+                <br><br><br>
             </div>
         </section>
         <section class="container-column-scroll">
@@ -231,7 +232,9 @@
             </div>
         </div>
     </footer>
-    <script type="module" src="animacion.js"></script>
+    <!--ScrollMagic-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
     <script src="/src/js/donde-estoy.js"></script>
 </body>
 

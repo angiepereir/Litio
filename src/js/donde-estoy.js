@@ -50,22 +50,175 @@ document.addEventListener("click", (e) => {
     }
 });
 
-/*titulo*/
-import { animate } from "animejs";
+// REVERSE SCROLLING COLUMNS ANIMATION
+function initReverseScrolling() {
+    const scrollContainer = document.querySelector('.container-column-scroll');
+    const parallaxSections = document.querySelectorAll('.parallax-scroll');
+    
+    if (!scrollContainer || !parallaxSections.length) return;
+    
+    let ticking = false;
+    
+    function updateReverseScroll() {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // Solo procesar si el contenedor está visible
+        if (containerRect.bottom >= 0 && containerRect.top <= viewportHeight) {
+            
+            parallaxSections.forEach((section, index) => {
+                const elevator = section.querySelector('.elevator');
+                const elevatorText = section.querySelector('.elevator-text');
+                
+                if (!elevator || !elevatorText) return;
+                
+                const sectionRect = section.getBoundingClientRect();
+                
+                // Calcular el progreso del scroll para esta sección
+                const sectionTop = sectionRect.top;
+                const sectionHeight = sectionRect.height;
+                
+                // Progreso basado en cuándo la sección entra y sale del viewport
+                const progress = (viewportHeight - sectionTop) / (viewportHeight + sectionHeight);
+                
+                // Diferentes velocidades para crear el efecto reverse
+                const imageSpeed = -0.6; // Imágenes se mueven hacia arriba
+                const textSpeed = 0.6;   // Texto se mueve hacia abajo
+                
+                // Calcular desplazamientos
+                const imageOffset = progress * 200 * imageSpeed; // Rango de movimiento
+                const textOffset = progress * 200 * textSpeed;
+                
+                // Aplicar transformaciones con suavizado
+                elevator.style.transform = `translateY(${imageOffset}px)`;
+                elevatorText.style.transform = `translateY(${textOffset}px)`;
+                
+                // Efecto de opacidad opcional basado en la proximidad al centro
+                const centerDistance = Math.abs(sectionTop - viewportHeight/2) / (viewportHeight/2);
+                const opacity = Math.max(0.3, 1 - centerDistance * 0.7);
+                
+                elevator.style.opacity = opacity;
+                elevatorText.style.opacity = opacity;
+            });
+        }
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateReverseScroll);
+            ticking = true;
+        }
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick);
+    
+    // Inicializar
+    updateReverseScroll();
+}
 
-animate("span", {
-    // Property keyframes
-    y: [
-        { to: "-2.75rem", ease: "outExpo", duration: 600 },
-        { to: 0, ease: "outBounce", duration: 800, delay: 100 },
-    ],
-    // Property specific parameters
-    rotate: {
-        from: "-1turn",
-        delay: 0,
-    },
-    delay: (_, i) => i * 50, // Function based value
-    ease: "inOutCirc",
-    loopDelay: 1000,
-    loop: true,
-});
+// ALTERNATIVA: Efecto más dramático con IntersectionObserver
+function initAdvancedReverseScrolling() {
+    const parallaxSections = document.querySelectorAll('.parallax-scroll');
+    
+    // Crear observer para detectar cuando las secciones entran al viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '10% 0px'
+    });
+    
+    parallaxSections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    let ticking = false;
+    
+    function updateAdvancedScroll() {
+        const viewportHeight = window.innerHeight;
+        const scrollY = window.pageYOffset;
+        
+        parallaxSections.forEach((section, index) => {
+            if (!section.classList.contains('in-view')) return;
+            
+            const elevator = section.querySelector('.elevator');
+            const elevatorText = section.querySelector('.elevator-text');
+            
+            if (!elevator || !elevatorText) return;
+            
+            const sectionRect = section.getBoundingClientRect();
+            const sectionCenter = sectionRect.top + sectionRect.height / 2;
+            const viewportCenter = viewportHeight / 2;
+            
+            // Distancia del centro de la sección al centro del viewport
+            const distanceFromCenter = sectionCenter - viewportCenter;
+            
+            // Diferentes patrones de movimiento para cada sección
+            const isEven = index % 2 === 0;
+            
+            let imageTransform, textTransform;
+            
+            if (isEven) {
+                // Secciones pares: imagen sube, texto baja
+                imageTransform = `translateY(${distanceFromCenter * -0.3}px) scale(${1 + Math.abs(distanceFromCenter) * 0.0002})`;
+                textTransform = `translateY(${distanceFromCenter * 0.5}px)`;
+            } else {
+                // Secciones impares: imagen baja, texto sube
+                imageTransform = `translateY(${distanceFromCenter * 0.3}px) scale(${1 + Math.abs(distanceFromCenter) * 0.0002})`;
+                textTransform = `translateY(${distanceFromCenter * -0.5}px)`;
+            }
+            
+            // Aplicar transformaciones
+            elevator.style.transform = imageTransform;
+            elevatorText.style.transform = textTransform;
+            
+            // Efecto de blur basado en la distancia
+            const blurAmount = Math.min(3, Math.abs(distanceFromCenter) * 0.01);
+            elevator.style.filter = `blur(${blurAmount}px)`;
+        });
+        
+        ticking = false;
+    }
+    
+    function requestAdvancedTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateAdvancedScroll);
+            ticking = true;
+        }
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', requestAdvancedTick, { passive: true });
+    window.addEventListener('resize', requestAdvancedTick);
+    
+    // Inicializar
+    updateAdvancedScroll();
+}
+
+// FUNCIÓN DE INICIALIZACIÓN PRINCIPAL
+function initColumnScrollEffects() {
+    // Remover el event listener anterior si existe
+    const oldScript = document.querySelector('script[data-column-scroll]');
+    if (oldScript) {
+        oldScript.remove();
+    }
+    
+    // Elegir qué efecto usar (puedes cambiar entre las dos opciones)
+    // initReverseScrolling(); // Efecto básico
+    initAdvancedReverseScrolling(); // Efecto avanzado
+}
+
+// Inicializar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initColumnScrollEffects);
+} else {
+    initColumnScrollEffects();
+}
