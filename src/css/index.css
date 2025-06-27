@@ -1,29 +1,3 @@
-  /* Estilos específicos para el átomo 3D en la intro */
-        #atom-container {
-            width: 300px;
-            height: 300px;
-            margin: 20px auto;
-            border-radius: 50%;
-            position: relative;
-            background: radial-gradient(circle, rgba(0,20,40,0.3) 0%, rgba(0,0,0,0.6) 100%);
-            border: 2px solid rgba(255,255,255,0.1);
-            box-shadow: 0 0 30px rgba(0,150,255,0.3);
-        }
-        
-        #atom-canvas {
-            border-radius: 50%;
-        }
-    
-        /* Animación de resplandor */
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 30px rgba(0,150,255,0.3); }
-            50% { box-shadow: 0 0 50px rgba(0,150,255,0.6); }
-        }
-        
-        #atom-container {
-            animation: glow 3s ease-in-out infinite;
-        }
-
 #particles-js {
   position: fixed;
   top: 0;
