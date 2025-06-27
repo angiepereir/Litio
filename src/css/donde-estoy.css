@@ -6,9 +6,6 @@
     font-optical-sizing: auto;
 }
 
-/*header*/
-
-
 
 /*nav nuevo*/
 /* Navbar colapsado por defecto - solo iconos */
@@ -330,81 +327,6 @@ body {
     background-color: #0d0d25;
 }
 
-/*
-.titulo h1 span{
-    display: flex;
-    font-family: "Happy Monkey", system-ui;
-    font-size: larger;
-    font-weight: bold;
-    margin: 1rem;
-    justify-content: center;
-}
-/*container-top*/
-/*container-info*/
-
-
-/*parte central de la pagina, carrusel y parallax
-.container-mid-photos {
-    height: auto;
-    width: 100%;
-
-}
-
-.images-box {
-    position: relative;
-    max-width: auto;
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    scroll-snap-type: x mandatory;
-    padding: 1rem;
-    overflow-x: auto;
-}
-
-.carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 500%;
-}
-
-.carousel img {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    object-fit: cover;
-    scroll-snap-align: center;
-    flex-shrink: 0;
-
-}
-
-@media (max-width:600px) {
-    .carousel img {
-        max-width: 90%;
-        height: 180px;
-    }
-}
-
-/*button #previous {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(red, green, blue, alpha);
-    color: aliceblue;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-
-}
-
-#prev {
-    left: 10px;
-}
-
-#next {
-    right: 10px;
-}*/
-
 /*titulo*/
 
 .tittle h1 {
@@ -433,14 +355,44 @@ body {
 }
 
 /*intro*/
-.text-intro h2,
-p {
+.text-intro h2{
     display: flex;
     text-align: center;
     justify-content: center;
     color: white;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    font-size: 2rem;
 }
 
+.introduccion p{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    font-size: 1.5rem;
+}
+
+.text-inner p{
+    display: flex;
+    text-align: justify;
+    justify-content:center;
+    color: white;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    font-size: 1.5rem;
+}
+
+#textoAzul{
+    font-style: oblique;
+    color: #355d9b;
+    display: flex;
+    text-align: center;
+    justify-content:center;
+    font-size: 1.5rem;
+}
 
 /* WINDOW PARALLAX EFFECT PARA CONTAINER-MID-PHOTOS */
 .container-mid-photos {
@@ -499,7 +451,7 @@ p {
 
 }
 
-/* OVERLAY OPCIONAL PARA INFORMACIÓN 
+/*OVERLAY OPCIONAL PARA INFORMACIÓN */
 .images-box .carousel::after {
     content: '';
     position: absolute;
@@ -511,7 +463,7 @@ p {
     z-index: 2;
     opacity: 0;
     transition: opacity 0.3s ease;
-}*/
+}
 
 .images-box .carousel:hover::after {
     opacity: 2;
@@ -521,7 +473,7 @@ p {
 @media (max-width: 768px) {
     .container-mid-photos {
         flex-direction: column;
-        padding: 2rem;
+        padding: 5rem;
     }
 
     .images-box {
@@ -550,36 +502,6 @@ p {
     overflow: hidden;
     background-color: #0d0d25;
 
-}
-
-/*
-.page1 {--dark: 0%}
-.page2 {--dark: 25%}
-.page3 {--dark: 50%}
-.page4 {--dark: 75%}
-.page5 {--dark: 100%}*/
-
-/*mid-inner-info
-@keyframes reveal {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.text-inner p {
-    animation: reveal linear both;
-    animation-timeline: view(block);
-    animation-range: cover 0% cover 100%;
-}
-
-.text-inner p {
-    font-family: "Roboto", sans-serif;
 }
 
 
@@ -623,7 +545,6 @@ p {
 
 .elevator-text p {
     text-align: center;
-    margin-top: 50%;
     color: white;
 }
 
@@ -809,94 +730,6 @@ p {
     animation: fadeInSlide 0.8s ease-out;
 }
 
-  /* Botón móvil 
-        #botonMovible {
-            position: fixed;
-            padding: 15px 25px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        #botonMovible:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-            background: linear-gradient(45deg, #ff5252, #d63031);
-        }
-
-        #botonMovible:active {
-            transform: scale(0.95);
-        }
-
-        /* Icono de YouTube 
-        .youtube-icon {
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 3px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .youtube-icon::before {
-            content: '▶';
-            color: #ff0000;
-            font-size: 12px;
-        }
-
-        /* Efectos visuales adicionales 
-        .trail {
-            position: fixed;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 107, 107, 0.6);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 999;
-            animation: fadeOut 0.5s ease-out forwards;
-        }
-
-        @keyframes fadeOut {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-        }
-
-        /* Responsive 
-        @media (max-width: 768px) {
-            #botonMovible {
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-            
-            .content h1 {
-                font-size: 2rem;
-            }
-            
-            .content p {
-                font-size: 1rem;
-            }
-        }*/
 
 /* Estilos para la sección container-how-to */
 .container-how-to {
@@ -943,7 +776,7 @@ p {
     gap: 10px;
     white-space: nowrap;
     user-select: none;
-    animation: moveButton 10s infinite ease-in-out;
+    animation: moveButton 10s infinite ease-in-out !important;
 }
 
 #botonMovible:hover {
@@ -990,7 +823,7 @@ p {
     #botonMovible {
         padding: 12px 20px;
         font-size: 14px;
-        animation: moveButtonMobile 6s infinite ease-in-out;
+        animation: moveButtonMobile 6s infinite ease-in-out !important;
     }
     
     @keyframes moveButtonMobile {
