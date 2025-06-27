@@ -327,7 +327,7 @@
 /*main*/
 body {
     margin: 0.3rem;
-    background-color: #909bc9;
+    background-color: #0d0d25;
 }
 
 /*
@@ -413,12 +413,23 @@ body {
     align-content: center;
     align-items: center;
     margin-top: 5rem;
+    color: white;
 }
 
 .titulo span {
     font-family: "Happy Monkey", system-ui;
     padding: 1rem;
-    font-size: 90px;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(135deg, #eeeeec 20%, #636c7d 50%, #355d9b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0.5s, 0.3);
+    position: relative;
+    animation: glow 2s ease-in-out infinite;
 }
 
 /*intro*/
@@ -427,6 +438,7 @@ p {
     display: flex;
     text-align: center;
     justify-content: center;
+    color: white;
 }
 
 
@@ -526,14 +538,7 @@ p {
 
 .info-text {
     display: flex;
-
 }
-
-
-
-
-
-
 
 /*parallax de menas*/
 .container-column-scroll {
@@ -543,6 +548,7 @@ p {
     padding: 1rem;
     position: relative;
     overflow: hidden;
+    background-color: #0d0d25;
 
 }
 
@@ -580,7 +586,7 @@ p {
 /*.column-scroll{}*/
 .elevator {
     flex: 1;
-    background-color: #909bc9;
+    background-color: #0d0d25;
     display: flex;
     align-items: right;
     justify-content: center;
@@ -601,7 +607,7 @@ p {
 
 .elevator-text {
     flex: 1;
-    background-color: #909bc9;
+    background-color: #0d0d25;
     display: flex;
     align-items: left;
     justify-content: center;
@@ -618,6 +624,7 @@ p {
 .elevator-text p {
     text-align: center;
     margin-top: 50%;
+    color: white;
 }
 
 .parallax-scroll {
@@ -685,7 +692,7 @@ p {
     align-items: center;
     justify-content: center;
     padding: 3rem;
-    text-align: center;
+    text-align:start;
     transition: transform 0.1s linear, opacity 0.3s ease;
     will-change: transform, opacity;
     position: relative;
@@ -694,8 +701,8 @@ p {
 .elevator-text p {
     font-size: 1.8rem;
     font-weight: 300;
-    line-height: 1.6;
-    color: #2c3e50;
+    line-height: 1;
+    color: #ffffff;
     opacity: 0.9;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -800,6 +807,199 @@ p {
 
 .parallax-scroll.in-view {
     animation: fadeInSlide 0.8s ease-out;
+}
+
+  /* Botón móvil 
+        #botonMovible {
+            position: fixed;
+            padding: 15px 25px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        #botonMovible:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #ff5252, #d63031);
+        }
+
+        #botonMovible:active {
+            transform: scale(0.95);
+        }
+
+        /* Icono de YouTube 
+        .youtube-icon {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 3px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .youtube-icon::before {
+            content: '▶';
+            color: #ff0000;
+            font-size: 12px;
+        }
+
+        /* Efectos visuales adicionales 
+        .trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 107, 107, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        /* Responsive 
+        @media (max-width: 768px) {
+            #botonMovible {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .content h1 {
+                font-size: 2rem;
+            }
+            
+            .content p {
+                font-size: 1rem;
+            }
+        }*/
+
+/* Estilos para la sección container-how-to */
+.container-how-to {
+    position: relative;
+    min-height: 100vh;
+    background-color:#0d0d25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.extraction {
+    text-align:center;
+    z-index: 10;
+    position: relative;
+}
+
+.extraction p {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+}
+
+/* Botón móvil de YouTube */
+#botonMovible {
+    position: absolute;
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #061038, #cc0000);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    z-index: 100;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    user-select: none;
+    animation: moveButton 10s infinite ease-in-out;
+}
+
+#botonMovible:hover {
+    transform: scale(1.15) !important;
+    box-shadow: 0 15px 40px rgba(255,0,0,0.4);
+    background: linear-gradient(45deg, #ff3333, #e60000);
+    animation-play-state: paused;
+}
+
+/* Icono de YouTube */
+.youtube-icon {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.youtube-icon::before {
+    content: '▶';
+    color: #ff0000;
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+/* Animación de movimiento */
+@keyframes moveButton {
+    0% { top: 20%; left: 10%; transform: rotate(0deg); }
+    12.5% { top: 15%; left: 80%; transform: rotate(45deg); }
+    25% { top: 70%; left: 85%; transform: rotate(90deg); }
+    37.5% { top: 80%; left: 50%; transform: rotate(135deg); }
+    50% { top: 75%; left: 15%; transform: rotate(180deg); }
+    62.5% { top: 40%; left: 5%; transform: rotate(225deg); }
+    75% { top: 30%; left: 60%; transform: rotate(270deg); }
+    87.5% { top: 50%; left: 75%; transform: rotate(315deg); }
+    100% { top: 20%; left: 10%; transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #botonMovible {
+        padding: 12px 20px;
+        font-size: 14px;
+        animation: moveButtonMobile 6s infinite ease-in-out;
+    }
+    
+    @keyframes moveButtonMobile {
+        0% { top: 15%; left: 5%; }
+        25% { top: 20%; left: 70%; }
+        50% { top: 70%; left: 75%; }
+        75% { top: 75%; left: 10%; }
+        100% { top: 15%; left: 5%; }
+    }
 }
 
 /*Footer*/
