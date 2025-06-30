@@ -17,7 +17,6 @@
     playBtn.addEventListener("click", () => {
       pantallaPrincipal.style.display = "none";
       contenedorPrincipal.scrollIntoView({ behavior: "smooth" });
-      mostrarReinoActual();
     });
   }
 
@@ -66,8 +65,8 @@
 
     Swal.fire({
       icon: esCorrecta ? "success" : "error",
-      title: esCorrecta ? "¡Correcto!" : "¡Incorrecto!",
-      text: esCorrecta ? "¡Bien hecho!" : "Sigue intentándolo...",
+      title: esCorrecta ? "¡Correcto!" : "¡Ni Heráclito entendería esa respuesta tan confusa!",
+      text: esCorrecta ? "¡Vaya, por fin una neurona encendida!" : "Sigue intentándolo...",
       willClose: () => {
         avanzarSiTodasResueltasDelReino();
       }
