@@ -1,12 +1,14 @@
   document.addEventListener("DOMContentLoaded", () => {
   const correctas = document.querySelectorAll(".respuestaCorrecta");
   const incorrectas = document.querySelectorAll(".respuestaIncorrecta");
-  const totalPreguntas = 3;
+  const totalPreguntas = document.querySelectorAll('.pregunta-card').length;
   let puntos = 0;
 
-  //Inicio: Pantalla de Incio
+  const reinosOrden = ['quimico', 'natural', 'tecnologico'];
+  const preguntasRespondidas = new Set();
+  let reinoActualIndex = 0;
 
-    // Pantalla de inicio
+  // Pantalla de inicio
   const playBtn = document.getElementById("playBtn");
   const pantallaPrincipal = document.querySelector(".pantalla-principal");
   const contenedorPrincipal = document.querySelector(".contenedor-principal");
@@ -15,81 +17,95 @@
     playBtn.addEventListener("click", () => {
       pantallaPrincipal.style.display = "none";
       contenedorPrincipal.scrollIntoView({ behavior: "smooth" });
+      mostrarReinoActual();
     });
   }
 
-//Mostrar preguntas-pero aqui primero las oculta
-
-document.querySelectorAll('.reinos a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();  // Para que no haga el scroll automático al id
-
-    // Ocultar todas las secciones con clase preguntas
+  // Mostrar solo el reino actual permitido
+  function mostrarReinoActual() {
     document.querySelectorAll('.preguntas').forEach(sec => {
       sec.style.display = 'none';
     });
 
-    // Mostrar la sección que corresponde al data-reino del enlace clickeado
-    const reinoId = this.getAttribute('data-reino');
-    const seccionMostrar = document.getElementById(reinoId);
-    if (seccionMostrar) {
-      seccionMostrar.style.display = 'block';
+    const reino = reinosOrden[reinoActualIndex];
+    const seccion = document.getElementById(reino);
+    if (seccion) {
+      seccion.style.display = 'block';
     }
-  });
-});
-//termina aqui este bloque
+  }
 
-  // Llama una sola vez a sumarPunto por cada respuesta correcta
-  const preguntasRespondidas = new Set();
-
-  // Manejar respuestas correctas
-  correctas.forEach((elemento) => {
-    elemento.addEventListener("click", () => {
-      if (preguntaYaRespondida(elemento)) return;
-
-      sonidoCorrecto.currentTime = 0;
-      sonidoCorrecto.play();
-
-      elemento.style.backgroundColor = "#d4edda"; // verde claro
-
-      Swal.fire({
-        icon: "success",
-        title: "¡Vaya, por fin una neurona encendida!",
-        text: "¡Bien hecho!",
-      });
-
-      desactivarGrupo(elemento);
-      marcarPreguntaRespondida(elemento);
-      puntos++;
-
-      if (puntos === totalPreguntas) {
-        mostrarMensajeGanador();
+  // Desactivar navegación manual (click en menú)
+  document.querySelectorAll('.reinos a').forEach((link, index) => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (index <= reinoActualIndex) {
+        mostrarReinoActual();
+      } else {
+        Swal.fire({
+          icon: "info",
+          title: "¡Ups!",
+          text: "Primero responde las preguntas anteriores antes de avanzar.",
+        });
       }
     });
   });
 
-  // Manejar respuestas incorrectas
-  incorrectas.forEach((elemento) => {
-    elemento.addEventListener("click", () => {
-      if (preguntaYaRespondida(elemento)) return;
+  // Manejo de respuestas
+  function manejarRespuesta(elemento, esCorrecta) {
+    if (preguntaYaRespondida(elemento)) return;
 
+    if (esCorrecta) {
+      sonidoCorrecto.currentTime = 0;
+      sonidoCorrecto.play();
+      elemento.style.backgroundColor = "#d4edda";
+    } else {
       sonidoIncorrecto.currentTime = 0;
       sonidoIncorrecto.play();
+      elemento.style.backgroundColor = "#f8d7da";
+    }
 
-      elemento.style.backgroundColor = "#f8d7da"; // rojo claro
-
-      Swal.fire({
-        icon: "error",
-        title: "Ni Heráclito entendería esa respuesta tan confusa.",
-        text: "Intenta otra vez.",
-      });
-
-      desactivarGrupo(elemento);
-      marcarPreguntaRespondida(elemento);
+    Swal.fire({
+      icon: esCorrecta ? "success" : "error",
+      title: esCorrecta ? "¡Correcto!" : "¡Incorrecto!",
+      text: esCorrecta ? "¡Bien hecho!" : "Sigue intentándolo...",
+      willClose: () => {
+        avanzarSiTodasResueltasDelReino();
+      }
     });
+
+    desactivarGrupo(elemento);
+    marcarPreguntaRespondida(elemento);
+
+    if (esCorrecta) puntos++;
+
+    if (puntos === totalPreguntas) {
+      mostrarMensajeGanador();
+    }
+  }
+
+  correctas.forEach((elemento) => {
+    elemento.addEventListener("click", () => manejarRespuesta(elemento, true));
   });
 
-  // Desactiva todas las opciones del grupo una vez respondido
+  incorrectas.forEach((elemento) => {
+    elemento.addEventListener("click", () => manejarRespuesta(elemento, false));
+  });
+
+  function avanzarSiTodasResueltasDelReino() {
+    const preguntasEnReino = document
+      .getElementById(reinosOrden[reinoActualIndex])
+      .querySelectorAll(".pregunta-card");
+
+    const todasRespondidas = Array.from(preguntasEnReino).every(p =>
+      preguntasRespondidas.has(p)
+    );
+
+    if (todasRespondidas && reinoActualIndex < reinosOrden.length - 1) {
+      reinoActualIndex++;
+      mostrarReinoActual();
+    }
+  }
+
   function desactivarGrupo(opcionSeleccionada) {
     const grupo = opcionSeleccionada.parentElement.querySelectorAll("li");
     grupo.forEach((li) => {
@@ -97,7 +113,6 @@ document.querySelectorAll('.reinos a').forEach(link => {
     });
   }
 
-  // 🔄 Control para que no se sume más de una vez por pregunta
   function marcarPreguntaRespondida(elemento) {
     const pregunta = elemento.closest(".pregunta-card");
     preguntasRespondidas.add(pregunta);
@@ -108,23 +123,23 @@ document.querySelectorAll('.reinos a').forEach(link => {
     return preguntasRespondidas.has(pregunta);
   }
 
-  // 🎉 Mostrar mensaje de ganador
   function mostrarMensajeGanador() {
     const mensaje = document.getElementById("Mensaje-ganador");
     if (mensaje) {
       mensaje.classList.remove("hidden");
+      mensaje.scrollIntoView({ behavior: "smooth" });
     }
   }
 
-  // 🔁 Reiniciar
   window.reiniciarJuego = function () {
-    location.reload(); // Recarga todo
+    location.reload();
   };
 });
 
-// 🎵 Sonidos
+// Sonidos
 const sonidoCorrecto = document.getElementById("sound-correct");
 const sonidoIncorrecto = document.getElementById("sound-incorrect");
+
 
 /*nav*/
 
