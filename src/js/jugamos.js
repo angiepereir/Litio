@@ -1,30 +1,91 @@
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
   const correctas = document.querySelectorAll(".respuestaCorrecta");
   const incorrectas = document.querySelectorAll(".respuestaIncorrecta");
+  const totalPreguntas = 3;
+  let puntos = 0;
+
+  //Inicio: Pantalla de Incio
+
+    // Pantalla de inicio
+  const playBtn = document.getElementById("playBtn");
+  const pantallaPrincipal = document.querySelector(".pantalla-principal");
+  const contenedorPrincipal = document.querySelector(".contenedor-principal");
+
+  if (playBtn && pantallaPrincipal && contenedorPrincipal) {
+    playBtn.addEventListener("click", () => {
+      pantallaPrincipal.style.display = "none";
+      contenedorPrincipal.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+//Mostrar preguntas-pero aqui primero las oculta
+
+document.querySelectorAll('.reinos a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();  // Para que no haga el scroll automático al id
+
+    // Ocultar todas las secciones con clase preguntas
+    document.querySelectorAll('.preguntas').forEach(sec => {
+      sec.style.display = 'none';
+    });
+
+    // Mostrar la sección que corresponde al data-reino del enlace clickeado
+    const reinoId = this.getAttribute('data-reino');
+    const seccionMostrar = document.getElementById(reinoId);
+    if (seccionMostrar) {
+      seccionMostrar.style.display = 'block';
+    }
+  });
+});
+//termina aqui este bloque
+
+  // Llama una sola vez a sumarPunto por cada respuesta correcta
+  const preguntasRespondidas = new Set();
 
   // Manejar respuestas correctas
   correctas.forEach((elemento) => {
     elemento.addEventListener("click", () => {
+      if (preguntaYaRespondida(elemento)) return;
+
+      sonidoCorrecto.currentTime = 0;
+      sonidoCorrecto.play();
+
       elemento.style.backgroundColor = "#d4edda"; // verde claro
+
       Swal.fire({
         icon: "success",
-        title: "¡Correcto!",
+        title: "¡Vaya, por fin una neurona encendida!",
         text: "¡Bien hecho!",
       });
+
       desactivarGrupo(elemento);
+      marcarPreguntaRespondida(elemento);
+      puntos++;
+
+      if (puntos === totalPreguntas) {
+        mostrarMensajeGanador();
+      }
     });
   });
 
   // Manejar respuestas incorrectas
   incorrectas.forEach((elemento) => {
     elemento.addEventListener("click", () => {
+      if (preguntaYaRespondida(elemento)) return;
+
+      sonidoIncorrecto.currentTime = 0;
+      sonidoIncorrecto.play();
+
       elemento.style.backgroundColor = "#f8d7da"; // rojo claro
+
       Swal.fire({
         icon: "error",
-        title: "Incorrecto",
+        title: "Ni Heráclito entendería esa respuesta tan confusa.",
         text: "Intenta otra vez.",
       });
+
       desactivarGrupo(elemento);
+      marcarPreguntaRespondida(elemento);
     });
   });
 
@@ -35,31 +96,35 @@ document.addEventListener("DOMContentLoaded", () => {
       li.style.pointerEvents = "none";
     });
   }
+
+  // 🔄 Control para que no se sume más de una vez por pregunta
+  function marcarPreguntaRespondida(elemento) {
+    const pregunta = elemento.closest(".pregunta-card");
+    preguntasRespondidas.add(pregunta);
+  }
+
+  function preguntaYaRespondida(elemento) {
+    const pregunta = elemento.closest(".pregunta-card");
+    return preguntasRespondidas.has(pregunta);
+  }
+
+  // 🎉 Mostrar mensaje de ganador
+  function mostrarMensajeGanador() {
+    const mensaje = document.getElementById("Mensaje-ganador");
+    if (mensaje) {
+      mensaje.classList.remove("hidden");
+    }
+  }
+
+  // 🔁 Reiniciar
+  window.reiniciarJuego = function () {
+    location.reload(); // Recarga todo
+  };
 });
-/*SOUNDS*/
 
-const sonidoCorrecto = document.getElementById(`sound-correct`);
-const sonidoIncorrecto = document.getElementById(`sound-incorrect`);
-
-const respuestasCorrectas = document.querySelectorAll(`.respuestaCorrecta`);
-const respuestasIncorrectas = document.querySelectorAll(`.respuestaIncorrecta`);
-
-respuestasCorrectas.forEach(respuesta => {
-  respuesta.addEventListener(`click`, () => {
-    sonidoCorrecto.currentTime = 0;
-    sonidoCorrecto.play();
-    respuesta.style.backgroundColor = `green`;
-  })
-});
-
-respuestasIncorrectas.forEach(respuesta => {
-  respuesta.addEventListener(`click`, () => {
-    sonidoIncorrecto.currentTime = 0;
-    sonidoIncorrecto.play();
-    respuesta.style.backgroundColor = `red`;
-  })
-});
-
+// 🎵 Sonidos
+const sonidoCorrecto = document.getElementById("sound-correct");
+const sonidoIncorrecto = document.getElementById("sound-incorrect");
 
 /*nav*/
 
