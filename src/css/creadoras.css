@@ -111,15 +111,6 @@ body {
         transform-origin: bottom left;
      }
 
-.card {
-   margin: ;
-   padding: auto;
-   width: ;
-   background: ;
-   text-align: ;
-   border-radius: ; 
-}
-
 .card::after, .card::before{
     content: '';
     position: absolute;
@@ -737,7 +728,6 @@ body {
 .hero h1 {
   font-size: 3rem;
   background: linear-gradient(to right, #40ffaa, #4079ff);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
 }
