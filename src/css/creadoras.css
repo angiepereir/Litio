@@ -730,6 +730,7 @@ body {
   background: linear-gradient(to right, #40ffaa, #4079ff);
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
+  -webkit-background-clip: text;
 }
 
 .hero p {
