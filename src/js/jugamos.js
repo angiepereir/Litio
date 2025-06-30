@@ -36,9 +36,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+/*SOUNDS*/
+
+const sonidoCorrecto = document.getElementById(`sound-correct`);
+const sonidoIncorrecto = document.getElementById(`sound-incorrect`);
+
+const respuestasCorrectas = document.querySelectorAll(`.respuestaCorrecta`);
+const respuestasIncorrectas = document.querySelectorAll(`.respuestaIncorrecta`);
+
+respuestasCorrectas.forEach(respuesta => {
+  respuesta.addEventListener(`click`, () => {
+    sonidoCorrecto.currentTime = 0;
+    sonidoCorrecto.play();
+    respuesta.style.backgroundColor = `green`;
+  })
+});
+
+respuestasIncorrectas.forEach(respuesta => {
+  respuesta.addEventListener(`click`, () => {
+    sonidoIncorrecto.currentTime = 0;
+    sonidoIncorrecto.play();
+    respuesta.style.backgroundColor = `red`;
+  })
+});
 
 
-js 
 /*nav*/
 
 function toggleMenu() {
