@@ -1,66 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creadoras</title>
-    <script scr="script.js" href="creadoras.js"></script>
-    <link rel="stylesheet" href="creadoras.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creadoras</title>
+  <script src="/src/js/creadoras.js" defer></script>
+  <link rel="stylesheet" href="/src/css/creadoras.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.13/build/spline-viewer.js"></script>
 </head>
 <body>
-    <header header="id">
-        <h1 class="introduction">Presentando</h1>
-        <h1 class="introduction">Con ustedes</h1>
-        <h1 class="introduction">a las expertas en litio...</h1>
-    </header>
-    <div class="stack-area">
-      <div class="left">
-        <div class="title">Our Features</div>
-        <div class="sub-title">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente qui
-          quis, facere, cupiditate, doloremque natus ex perspiciatis ratione hic
-          corrupti adipisci ea doloribus!
-          <br />
-          <button>See More Details</button>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="logo">
+      <a href="https://celiami.github.io/periodic-table-project/#table-section" target="_blank" rel="noopener" class="back-arrow" title="¿Volver a la tabla?">
+        <i class="fa-solid fa-arrow-left"></i> 3. Litio
+      </a>
+    </div>
+    <nav class="menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="/index.html"  rel="noopener"><i class="fa-solid fa-circle-question"></i><span> Como Soy </span></a></li>
+        <li><a href="/pages/donde-estoy.html" rel="noopener"><i class="fa-solid fa-map-location-dot"></i><span> Donde Estoy </span></a></li>
+        <li><a href="/pages/historia.html"  rel="noopener"><i class="fa-solid fa-book"></i><span> Historia </span></a></li>
+        <li><a href="/pages/jugamos.html"  rel="noopener"><i class="fa-solid fa-gamepad"></i><span> Juego </span></a></li>
+        <li><a href="/pages/creadoras.html" rel="noopener" class="activo"><i class="fa-solid fa-users"></i><span> Creadoras </span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Botón hamburguesa para mobile -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- SECCIÓN HERO ORIGINAL -->
+  <section class="welcome-section">
+    <img class="image-gradient" src="gradient.png" alt="">
+    <div class="layer-blur"></div>
+    <div class="welcome-container">
+      <div class="welcome-header">
+        <h1 class="logo">Sofix</h1>
+        <nav aria-label="Welcome navigation">
+          <a href="#">COMPANY</a>
+          <a href="#">FEATURES</a>
+          <a href="#">RESOURCES</a>
+          <a href="#">DOCS</a>
+        </nav>
+        <button type="button" class="btn-signing">SIGN IN</button>
+      </div>
+
+      <div class="welcome-content">
+        <div class="tag-box">
+          <div class="tag">Conocenos!</div>
+        </div>
+        <h1 class="welcome-title">Creadoras de <br>Litio</h1>
+        <p class="description">
+          Presentando con ustedes a las responsables de esta página tan increíble como
+          todos los inventos que hemos visto en esta presentación.
+        </p>
+
+        <div class="buttons">
+          <a href="#" class="btn-get-started-action">DOCUMENTATION</a>
+          <a href="#" class="btn-signin-main">Get Started</a>
         </div>
       </div>
-      <div class="right">
-        <div class="card">
-          <div class="sub">Simplified</div>
-          <div class="content">Complex tasks are now simple</div>
+
+      <spline-viewer class="robot-3d" url="https://prod.spline.design/exOl9jTMs4iBXoT4/scene.splinecode"></spline-viewer>
+    </div>
+  </section>
+
+  <!-- HERO LITIO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>⚡ Juntas motivando el Futuro del Litio</h1>
+      <p>Conectamos innovación, sostenibilidad y talento femenino en el corazón de la revolución energética.</p>
+      <a href="#descubre" class="cta-button">Descubre nuestro impacto</a>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+<main>
+    <div id="emojiContainer"></div>
+    <div class="stack-area">
+        <div class="left">
+            <div id="title" class="title">Nuestras Creadoras</div>
+            <div class="sub-title">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente qui quis, facere, cupiditate, doloremque natus ex perspiciatis ratione hic corrupti adipisci ea doloribus!
+                <br>
+                <button id="emojiButton" type="button">aprietame</button>
+            </div>
         </div>
-        <div class="card">
-          <div class="sub">Boost Productivity</div>
-          <div class="content">Perform Tasks in less time</div>
+        <div class="right">
+            <div class="card" data-title="Sofia Reyes" data-emoji="🎨" data-subtitle="Sofía ama el arte. 🎨" >
+                <img src="/img/tequeños.jpg" alt="foto de sofia reyes" class="creator-photo">
+                <div class="content-socials">
+                    <a href="#" class="social-icon" aria-label="Facebook" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card" data-title="Angie Pereira" data-emoji="🌈">
+                <img src="/img/tequeños.jpg" alt="foto de angie pereira" class="creator-photo">
+                <div class="content-socials">
+                    <a href="#" class="social-icon" aria-label="Facebook" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card" data-title="Ingrid Martines" data-emoji="🚀">
+                <img src="/img/tequeños.jpg" alt="foto de ingrid martines" class="creator-photo">
+                <div class="content-socials">
+                    <a href="#" class="social-icon" aria-label="Facebook" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card" data-title="Michelle Gelves" data-emoji="💖">
+                <img src="/img/tequeños.jpg" alt="foto de michelle gelves" class="creator-photo">
+                <div class="content-socials">
+                    <a href="#" class="social-icon" aria-label="Facebook" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card" data-title="Maryori Cruz" data-emoji="🌼">
+                <img src="/img/tequeños.jpg" alt="foto de maryori cruz" class="creator-photo">
+                <div class="content-socials">
+                    <a href="#" class="social-icon" aria-label="Facebook" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <div class="sub">Facilitated learning</div>
-          <div class="content">train anyone from anywhere</div>
+    </div>
+</main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>Sobre el Litio</h3>
+          <p>El litio es un mineral estratégico clave para la transición energética y el desarrollo de tecnologías sostenibles como baterías recargables, vehículos eléctricos y almacenamiento de energía.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+            <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">💼</a>
+          </div>
         </div>
-        <div class="card">
-          <div class="sub">Support</div>
-          <div class="content">Now its 24/7 support</div>
+        <div class="footer-section">
+          <h3>Enlaces Rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Reserva del litio</a></li>
+            <li><a href="#">Procesamientos</a></li>
+            <li><a href="#">Aplicaciones</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Aplicaciones del Litio</h3>
+          <ul class="footer-links">
+            <li><a href="#">Baterías de Litio</a></li>
+            <li><a href="#">Vehículos Eléctricos</a></li>
+            <li><a href="#">Almacenamiento Energético</a></li>
+            <li><a href="#">Tecnología Médica</a></li>
+            <li><a href="#">Industria del Vidrio</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Proyecto Litio. Todos los derechos reservados.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Términos de Uso</a>
+          <a href="#">Cookies</a>
         </div>
       </div>
     </div>
-    <main>
-        <section>
-            <article class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="./img/Tabitha.jpg" alt="Retrato">
-                        <h2>Sierra circular</h2>
-                    </div>
-                    <div class="card-back">
-                        <p class="card-title"></p>
-                        <p class="contribution"></p>
-                    </div>
-                </div>
-            </article>
-        </section>
-    </main>
-    
-    
-    
+  </footer>
+
 </body>
 </html>
