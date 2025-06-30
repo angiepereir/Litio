@@ -20,10 +20,8 @@ rotateCards();
 window.addEventListener("scroll", () => {
   let distance = window.innerHeight * 0.5;
   let topVal = stackArea.getBoundingClientRect().top;
-  let index = -1 * (topVal / distance + 1);
-  index = Math.floor(index);
+  let index = Math.floor(-1 * (topVal / distance + 1));
 
-  // Mostrar u ocultar las tarjetas
   for (let i = 0; i < cards.length; i++) {
     if (i <= index) {
       cards[i].classList.add("away");
@@ -32,12 +30,14 @@ window.addEventListener("scroll", () => {
     }
   }
 
-  // Cambiar el título con base en la tarjeta actual
-  if (index >= 0 && index < cards.length) {
-    let currentTitle = cards[index].getAttribute("data-title");
-    title.textContent = currentTitle;
-  } else {
-    title.textContent = "Our Features"; // Valor por defecto si no hay tarjeta activa
+  // Actualizamos el título con la tarjeta activa (la última que no tiene la clase away)
+  let currentCard = Array.from(cards).find(card => !card.classList.contains("away"));
+  if (currentCard) {
+    title.style.opacity = 0;
+    setTimeout(() => {
+      title.textContent = currentCard.getAttribute("data-title");
+      title.style.opacity = 1;
+    }, 200);
   }
 
   rotateCards();
@@ -95,3 +95,67 @@ document.addEventListener("click", (e) => {
         hamburger.classList.remove("active");
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('emojiButton');
+
+  button.addEventListener('click', function () {
+    // Elimina cualquier lluvia anterior
+    document.querySelectorAll('.emoji-rain').forEach(e => e.remove());
+
+    // Buscar la carta visible en el viewport
+    const visibleCard = Array.from(document.querySelectorAll('.card')).find(card => {
+      const rect = card.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    });
+
+    if (!visibleCard) return;
+
+    const emoji = visibleCard.getAttribute('data-emoji');
+    if (!emoji) return;
+
+    // Crear contenedor para lluvia
+    const rainContainer = document.createElement('div');
+    rainContainer.classList.add('emoji-rain');
+    Object.assign(rainContainer.style, {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      pointerEvents: 'none',
+      overflow: 'hidden',
+      zIndex: 9999,
+    });
+    document.body.appendChild(rainContainer);
+
+    // Generar lluvia
+    for (let i = 0; i < 30; i++) {
+      const emojiSpan = document.createElement('span');
+      emojiSpan.textContent = emoji;
+      Object.assign(emojiSpan.style, {
+        position: 'absolute',
+        left: `${Math.random() * 100}vw`,
+        top: `-40px`,
+        fontSize: `${Math.random() * 24 + 16}px`,
+        opacity: 1,
+        transition: 'transform 3s ease, opacity 3s ease',
+      });
+
+      rainContainer.appendChild(emojiSpan);
+
+      setTimeout(() => {
+        emojiSpan.style.transform = `translateY(100vh) rotate(${Math.random() * 360}deg)`;
+        emojiSpan.style.opacity = 0;
+      }, i * 100);
+    }
+
+    // Remover después de animación
+    setTimeout(() => {
+      rainContainer.remove();
+    }, 4000);
+  });
+});
+
+

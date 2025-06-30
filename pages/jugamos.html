@@ -1,1 +1,105 @@
-<!--hola-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Trivia</title>
+    <link rel="stylesheet" href="../src/css/jugamos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="navbar" id="navbar">
+        <div class="logo"><a href="https://celiami.github.io/periodic-table-project/#table-section" target="_blank"
+                class="back-arrow" title="¿Volver a la tabla?"><i class="fa-solid fa-arrow-left"></i> 3. Litio</a></div>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="/index.html" target="_blank"><i class="fa-solid fa-circle-question"></i><span> Como Soy
+                        </span></a></li>
+                <li><a href="/pages/donde-estoy.html" target="_blank"><i
+                            class="fa-solid fa-map-location-dot"></i> <span> Donde Estoy </span></a></li>
+                <li><a href="/pages/historia.html" target="_blank"><i class="fa-solid fa-book"></i> <span>Historia
+                        </span></a></li>
+                <li><a href="/pages/jugamos.html" target="_blank" class="activo"><i class="fa-solid fa-gamepad"></i><span> Juego
+                        </span></a></li>
+                <li><a href="/pages/creadoras.html" target="_blank"><i class="fa-solid fa-users"></i><span> Creadoras
+                        </span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Botón hamburguesa para mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div> 
+    <div class="contenedor-principal">
+    <h1 class="titulo">Trivia: los tres reinos de Litio</h1>
+    <!-- Escudos centrados -->
+    <section class="reinos">
+        <div class="reino">
+        <a href="#quimico">
+            <img src="../picture/escudoneon.png" alt="Escudo del Reino Químico" />
+            <h2 class="reino-quimico">Reino Químico</h2>
+        </a>
+        </div>
+        <div class="reino">
+        <a href="#natural">
+            <img src="../picture/escudoneon.png" alt="Escudo del Reino Natural" />
+            <h2 class="reino-natural">Reino Natural</h2>
+        </a>
+        </div>
+        <div class="reino">
+        <a href="#tecnologico">
+        <img src="../picture/escudoneon.png" alt="Escudo del Reino Tecnológico" />
+        <h2 class="reino-tecnologico">Reino Tecnológico</h2>
+        </a>
+        </div>
+    </section>
+
+    <!-- Secciones de preguntas -->
+    <section id="quimico" class="preguntas">
+      <div class="pregunta-card">
+        <img src="../picture/quimica.png" alt="Imagen 1" />
+        <h3>¿Cuál es el símbolo químico del litio?</h3>
+        <ol class="opciones">
+          <li class="respuestaIncorrecta">A) Lm</li>
+          <li class="respuestaCorrecta">B) Li</li> <!--respeusta correcta-->
+          <li class="respuestaIncorrecta">C) Lt</li> 
+          <li class="respuestaIncorrecta">D) Le</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="natural" class="preguntas">
+      <div class="pregunta-card">
+        <img src="../picture/quimicaverde2.png" alt="Imagen de pregunta" />
+        <h3>¿En qué región se encuentra el "Triángulo del Litio"?</h3>
+        <ol class="opciones">
+          <li class="respuestaIncorrecta">A) Europa Oriental</li>
+          <li class="respuestaIncorrecta">B) Asia Central</li>
+          <li class="respuestaCorrecta">C) Sudamérica</li> <!--respeusta correcta-->
+          <li class="respuestaIncorrecta">D) África Austral</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="tecnologico" class="preguntas">
+      <div class="pregunta-card">
+        <img src="../picture/naturaleza.png" alt="Imagen de tecnologia"/>
+        <h3>¿Para qué se usa principalmente el litio hoy en día?</h3>
+        <ol class="opciones">
+          <li class="respuestaIncorrecta">A) Pinturas</li>
+          <li class="respuestaCorrecta">B) Baterías recargables</li> <!--respeusta correcta-->
+          <li class="respuestaIncorrecta">C) Combustibles fósiles</li>
+          <li class="respuestaIncorrecta">D) Fertilizantes</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+  <script src="../src/js/jugamos.js"></script>
+</body>
+</html>
