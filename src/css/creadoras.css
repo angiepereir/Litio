@@ -1017,6 +1017,7 @@ spline-viewer.robot-3d {
 @media (max-width: 768px){
   .right {
     display: none;
+    overflow-x: hidden;
   }
 }
 
