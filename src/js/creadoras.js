@@ -158,3 +158,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+window.addEventListener("scroll", () => {
+  let cards = document.querySelectorAll(".card");
+  let subtitleText = document.querySelector("#subtitleText"); // solo el <p>
+  let title = document.querySelector("#title");
+
+  let visibleCard = Array.from(cards).find(card => {
+    const rect = card.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  });
+
+  if (visibleCard) {
+    // Obtener datos de la tarjeta
+    let cardTitle = visibleCard.getAttribute("data-title");
+    let cardSubtitle = visibleCard.getAttribute("data-subtitle");
+
+    // Actualizar texto
+    title.textContent = cardTitle;
+    subtitleText.textContent = cardSubtitle; // solo cambia el <p>, no el botón
+  }
+});
