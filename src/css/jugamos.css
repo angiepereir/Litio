@@ -1,6 +1,5 @@
 
 /*falta cambiar el color del texto de las preguntas de la seccion dos*/
-/*Quitar esa linea horrososa de los enlaces*/
 /*¿cambiar de imagenes?*/
 /*poner color segun el reino a las letras de las listas*/
 /*averiguar y ver como embellecer el título*/
@@ -10,14 +9,59 @@ body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     color: white;
-    background: -webkit-radial-gradient(#636c7d, #0d0d25);
+    background-image: url(/public/picture/juego.jpg);
 }
 
+/*Logo*/
+
+.pantalla-principal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #02000c 0%, #0d0d25 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+}
+
+.logoFilosofico {
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+#playBtn {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'roboto';
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#playBtn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/*cierre de logo*/
 .titulo {
     text-align: center;
     margin-top: 30px;
     font-family: 'Happy Monkey', cursive;
     font-size: 70px;
+    background: linear-gradient(90deg, #FF6B6B, #FFD93D, #6BCB77);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 }
 
 .reinos {
@@ -117,41 +161,156 @@ opacity: 1;
     padding: 40px 20px;
     max-width: 800px;
     margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+    color: #eeeeec;
+    text-shadow: 3px 5px 4px rgb(13, 13, 37) ;
+    /* ocultar*/
+    display: none;
 }
 
+
 .pregunta-card {
-    background-color: #34495e;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    padding: 4%;
+    background-color: #0d0d25;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
 
 .pregunta-card img {
     width: 100%;
-    max-height: 500px;
+    height: 100%;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 15px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.pregunta1 {
+color:#eeeeec;
+    text-shadow: 2px 2px 4px rgb(253, 90, 147);
+    font-size: 35px;
 }
 
 .opciones {
     list-style: none;
     padding-left: 0;
+    margin: 20px;
 }
 
 .opciones li {
-    padding: 8px;
+    padding: 3px;
     border: 1px solid #777;
     border-radius: 6px;
     margin-bottom: 10px;
     background-color: #3c5a78;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: left;
 }
 
 .opciones li:hover {
     background-color: #587a9e;
+}
+
+/*RESPONSIVE*/
+@media(max-width: 768px) {
+    .titulo {
+        font-size: 40px;
+        margin-top: 20px;
+    }
+    .reinos {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+        padding: 20px;
+    }
+    
+    .reino img {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .reinos-nombres {
+        font-size: 20px;
+        width: 80%;
+        padding: 10px 20px;
+    }
+
+    .preguntas {
+        padding: 20px 10px;
+    }
+    
+    .pregunta-card {
+        padding: 15px;
+    }
+
+    .pregunta-card img {
+        max-height: 250px;
+    }
+
+    .opciones li {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+/*MENSAJE GANADOR*/
+.hidden {
+  display: none;
+}
+
+#Mensaje-ganador {
+  background-color: #061038;
+  border: 2px solid #eeeeec;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  margin: 20px auto;
+  font-family: 'Happy Monkey', cursive;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  font-size: 2rem;
+  margin-bottom: 60px;
+}
+.mensaje-ganador {
+  animation: aparecer 0.6s ease-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#Mensaje-ganador p {
+    font-family: 'roboto';
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*BOTON*/
+#Mensaje-ganador button {
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: #000000;
+    border: 3px solid #0e0d0b;
+
+}
+
+reiniciarJuego {
+    font-size: 50px;
 }
 
 /* Navbar colapsado por defecto - solo iconos */

@@ -1,64 +1,143 @@
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
   const correctas = document.querySelectorAll(".respuestaCorrecta");
   const incorrectas = document.querySelectorAll(".respuestaIncorrecta");
+  const totalPreguntas = document.querySelectorAll('.pregunta-card').length;
+  let puntos = 0;
 
-  // Manejar respuestas correctas
+  const reinosOrden = ['quimico', 'natural', 'tecnologico'];
+  const preguntasRespondidas = new Set();
+  let reinoActualIndex = 0;
+
+  // Pantalla de inicio
+  const playBtn = document.getElementById("playBtn");
+  const pantallaPrincipal = document.querySelector(".pantalla-principal");
+  const contenedorPrincipal = document.querySelector(".contenedor-principal");
+
+  if (playBtn && pantallaPrincipal && contenedorPrincipal) {
+    playBtn.addEventListener("click", () => {
+      pantallaPrincipal.style.display = "none";
+      contenedorPrincipal.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // Mostrar solo el reino actual permitido
+  function mostrarReinoActual() {
+    document.querySelectorAll('.preguntas').forEach(sec => {
+      sec.style.display = 'none';
+    });
+
+    const reino = reinosOrden[reinoActualIndex];
+    const seccion = document.getElementById(reino);
+    if (seccion) {
+      seccion.style.display = 'block';
+    }
+  }
+
+  // Desactivar navegación manual (click en menú)
+  document.querySelectorAll('.reinos a').forEach((link, index) => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (index <= reinoActualIndex) {
+        mostrarReinoActual();
+      } else {
+        Swal.fire({
+          icon: "info",
+          title: "¡Ups!",
+          text: "Primero responde las preguntas anteriores antes de avanzar.",
+        });
+      }
+    });
+  });
+
+  // Manejo de respuestas
+  function manejarRespuesta(elemento, esCorrecta) {
+    if (preguntaYaRespondida(elemento)) return;
+
+    if (esCorrecta) {
+      sonidoCorrecto.currentTime = 0;
+      sonidoCorrecto.play();
+      elemento.style.backgroundColor = "#d4edda";
+    } else {
+      sonidoIncorrecto.currentTime = 0;
+      sonidoIncorrecto.play();
+      elemento.style.backgroundColor = "#f8d7da";
+    }
+
+    Swal.fire({
+      icon: esCorrecta ? "success" : "error",
+      title: esCorrecta ? "¡Correcto!" : "¡Ni Heráclito entendería esa respuesta tan confusa!",
+      text: esCorrecta ? "¡Vaya, por fin una neurona encendida!" : "Sigue intentándolo...",
+      willClose: () => {
+        avanzarSiTodasResueltasDelReino();
+      }
+    });
+
+    desactivarGrupo(elemento);
+    marcarPreguntaRespondida(elemento);
+
+    if (esCorrecta) puntos++;
+
+    if (puntos === totalPreguntas) {
+      mostrarMensajeGanador();
+    }
+  }
+
   correctas.forEach((elemento) => {
-    elemento.addEventListener("click", () => {
-      elemento.style.backgroundColor = "#d4edda"; // verde claro
-      Swal.fire({
-        icon: "success",
-        title: "¡Correcto!",
-        text: "¡Bien hecho!",
-      });
-      desactivarGrupo(elemento);
-    });
+    elemento.addEventListener("click", () => manejarRespuesta(elemento, true));
   });
 
-  // Manejar respuestas incorrectas
   incorrectas.forEach((elemento) => {
-    elemento.addEventListener("click", () => {
-      elemento.style.backgroundColor = "#f8d7da"; // rojo claro
-      Swal.fire({
-        icon: "error",
-        title: "Incorrecto",
-        text: "Intenta otra vez.",
-      });
-      desactivarGrupo(elemento);
-    });
+    elemento.addEventListener("click", () => manejarRespuesta(elemento, false));
   });
 
-  // Desactiva todas las opciones del grupo una vez respondido
+  function avanzarSiTodasResueltasDelReino() {
+    const preguntasEnReino = document
+      .getElementById(reinosOrden[reinoActualIndex])
+      .querySelectorAll(".pregunta-card");
+
+    const todasRespondidas = Array.from(preguntasEnReino).every(p =>
+      preguntasRespondidas.has(p)
+    );
+
+    if (todasRespondidas && reinoActualIndex < reinosOrden.length - 1) {
+      reinoActualIndex++;
+      mostrarReinoActual();
+    }
+  }
+
   function desactivarGrupo(opcionSeleccionada) {
     const grupo = opcionSeleccionada.parentElement.querySelectorAll("li");
     grupo.forEach((li) => {
       li.style.pointerEvents = "none";
     });
   }
+
+  function marcarPreguntaRespondida(elemento) {
+    const pregunta = elemento.closest(".pregunta-card");
+    preguntasRespondidas.add(pregunta);
+  }
+
+  function preguntaYaRespondida(elemento) {
+    const pregunta = elemento.closest(".pregunta-card");
+    return preguntasRespondidas.has(pregunta);
+  }
+
+  function mostrarMensajeGanador() {
+    const mensaje = document.getElementById("Mensaje-ganador");
+    if (mensaje) {
+      mensaje.classList.remove("hidden");
+      mensaje.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  window.reiniciarJuego = function () {
+    location.reload();
+  };
 });
-/*SOUNDS*/
 
-const sonidoCorrecto = document.getElementById(`sound-correct`);
-const sonidoIncorrecto = document.getElementById(`sound-incorrect`);
-
-const respuestasCorrectas = document.querySelectorAll(`.respuestaCorrecta`);
-const respuestasIncorrectas = document.querySelectorAll(`.respuestaIncorrecta`);
-
-respuestasCorrectas.forEach(respuesta => {
-  respuesta.addEventListener(`click`, () => {
-    sonidoCorrecto.currentTime = 0;
-    sonidoCorrecto.play();
-    respuesta.style.backgroundColor = `green`;
-  })
-});
-
-respuestasIncorrectas.forEach(respuesta => {
-  respuesta.addEventListener(`click`, () => {
-    sonidoIncorrecto.currentTime = 0;
-    sonidoIncorrecto.play();
-    respuesta.style.backgroundColor = `red`;
-  })
-});
+// Sonidos
+const sonidoCorrecto = document.getElementById("sound-correct");
+const sonidoIncorrecto = document.getElementById("sound-incorrect");
 
 
 /*nav*/
