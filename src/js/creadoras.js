@@ -179,3 +179,32 @@ window.addEventListener("scroll", () => {
     subtitleText.textContent = cardSubtitle; // solo cambia el <p>, no el botón
   }
 });
+
+window.addEventListener("scroll", () => {
+  const cards = document.querySelectorAll(".card");
+  const subtitleText = document.querySelector("#subtitleText");
+  const title = document.querySelector("#title");
+
+  // Detectar si estamos en un tamaño menor a 768px
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+    // Mostrar texto por defecto en mobile
+    subtitleText.textContent = "Somos mujeres fuertes, dependientes y resilientes. y luchamos nos y lograremos todo lo que nos proponemos.";
+    return; // Salimos sin hacer scroll tracking
+  }
+
+  // Scroll tracking solo en escritorio
+  const visibleCard = Array.from(cards).find(card => {
+    const rect = card.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  });
+
+  if (visibleCard) {
+    const cardTitle = visibleCard.getAttribute("data-title");
+    const cardSubtitle = visibleCard.getAttribute("data-subtitle");
+
+    title.textContent = cardTitle;
+    subtitleText.textContent = cardSubtitle;
+  }
+});
