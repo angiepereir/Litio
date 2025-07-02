@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      <link rel="icon" type="image/icon" href="/public/favicon.ico">
 </head>
 <body>
   <header class="navbar" id="navbar">
@@ -35,24 +36,29 @@
         <span></span>
         <span></span>
     </div> 
+    <!--Pantalla inicio-->
+    <div class="pantalla-principal">
+      <img src="/public/picture/Descartes.png" alt="Trivia Litio Logo" class="logoFilosofico">
+      <button id="playBtn">JUGAR</button>
+    </div>
     <div class="contenedor-principal">
     <h1 class="titulo">Trivia: los tres reinos de Litio</h1>
     <!-- Escudos centrados -->
     <section class="reinos">
         <div class="reino">
-        <a href="#quimico">
+        <a href="#quimico" data-reino="quimico">
             <img src="/public/picture/escudoquimico.png" alt="Escudo del Reino Químico" />
             <h2 class="reinos-nombres">Reino Químico</h2>
         </a>
         </div>
         <div class="reino">
-        <a href="#natural">
+        <a href="#natural" data-reino="natural">
             <img src="/public/picture/escudonatural.png" alt="Escudo del Reino Natural" />
             <h2 class="reinos-nombres">Reino Natural</h2>
         </a>
         </div>
         <div class="reino">
-        <a href="#tecnologico">
+        <a href="#tecnologico" data-reino="tecnologico">
         <img src="/public/picture/escudotecnologico.png" alt="Escudo del Reino Tecnológico" />
         <h2 class="reinos-nombres">Reino Tecnológico</h2>
         </a>
@@ -62,8 +68,8 @@
     <!-- Secciones de preguntas -->
     <section id="quimico" class="preguntas">
       <div class="pregunta-card">
-        <img src="../picture/azul1.png" alt="Imagen 1" />
-        <h3>¿Cuál es el símbolo químico del litio?</h3>
+        <img src="/public/picture/descartes.jpg" alt="imagen de pregunta"/>
+        <h3 class="pregunta1">¿Cuál es el símbolo químico del litio?</h3>
         <ol class="opciones">
           <li class="respuestaIncorrecta">A) Lm</li>
           <li class="respuestaCorrecta">B) Li</li> <!--respeusta correcta-->
@@ -75,7 +81,7 @@
 
     <section id="natural" class="preguntas">
       <div class="pregunta-card">
-        <img src="../picture/quimicaverde2.png" alt="Imagen de pregunta" />
+        <img src="/public/picture/heidegger.jpg" alt="Imagen de pregunta" />
         <h3>¿En qué región se encuentra el "Triángulo del Litio"?</h3>
         <ol class="opciones">
           <li class="respuestaIncorrecta">A) Europa Oriental</li>
@@ -88,7 +94,7 @@
 
     <section id="tecnologico" class="preguntas">
       <div class="pregunta-card">
-        <img src="../picture/naturaleza.png" alt="Imagen de tecnologia"/>
+        <img src="/public/picture/socrates.jpg" alt="Imagen de tecnologia"/>
         <h3>¿Para qué se usa principalmente el litio hoy en día?</h3>
         <ol class="opciones">
           <li class="respuestaIncorrecta">A) Pinturas</li>
@@ -100,6 +106,12 @@
      <audio id="sound-correct" src="/sounds/correct.mp3" preload="auto"></audio>
      <audio id="sound-incorrect" src="/sounds/incorrect.mp3" preload="auto"></audio>
     </section>
+  </div>
+  <!--Parte final del juego-->
+  <div id="Mensaje-ganador" class="hidden">
+    <h2>🎉 ¡Has ganado! 🎉</h2>
+    <p>"Bienvenido a nuestro ilustre reino. No prometemos café, pero sí ideas peligrosas"</p>
+    <button onclick="reiniciarJuego()">Volver a jugar</button>
   </div>
   <script src="../src/js/jugamos.js"></script>
   <!-- Footer -->
