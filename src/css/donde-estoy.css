@@ -1070,3 +1070,210 @@ body {
         justify-content: center;
     }
 }
+/* =========================================================
+   DONDE-ESTOY — RESPONSIVE OVERRIDES (append-only)
+   Pega esto AL FINAL de ../src/css/donde-estoy.css
+   ========================================================= */
+
+/* Base: imágenes y contenedores nunca se desborden */
+img, video, canvas { max-width: 100%; height: auto; }
+
+/* ===== Tablet y Mobile ===== */
+@media (max-width: 900px) {
+  /* Navbar: que sea barra superior desplegable (sin hover) */
+  .navbar{
+    position: fixed;
+    top: -100%;
+    left: 0; right: 0;
+    width: 100%;
+    background: rgba(20, 26, 48, .8);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 16px 16px;
+    padding: 72px 16px 16px;
+    z-index: 1000;
+    transition: top .3s ease;
+  }
+  .navbar.active{ top: 0; }
+
+  .menu ul{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .menu a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.15);
+  }
+  .menu a:hover{ background: rgba(255,255,255,.20); }
+
+  /* Botón hamburguesa visible en mobile (si no lo tienes estilado) */
+  .hamburger{
+    display: block;
+    position: fixed;
+    top: 16px; right: 16px;
+    z-index: 1001;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(20, 26, 48, .85);
+    border: 1px solid rgba(255,255,255,.15);
+    cursor: pointer;
+  }
+  .hamburger span{
+    display: block;
+    width: 26px; height: 3px;
+    background: #fff; margin: 5px 0; border-radius: 2px;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .hamburger.active span:nth-child(1){ transform: rotate(45deg) translate(5px,6px); }
+  .hamburger.active span:nth-child(2){ opacity: 0; }
+  .hamburger.active span:nth-child(3){ transform: rotate(-45deg) translate(6px,-6px); }
+
+  /* Top title / hero */
+  .container-top{ padding-top: 88px; } /* despegar del navbar fijo */
+  .tittle, .titulo{
+    text-align: center;
+  }
+  .titulo{
+    font-size: clamp(32px, 8vw, 56px);
+    line-height: 1.1;
+    margin: 0 auto;
+  }
+  .titulo span{ display: inline-block; }
+
+  /* Intro text */
+  .container-info article{
+    padding: 0 16px;
+  }
+  .text-intro h2{
+    font-size: clamp(18px, 4.5vw, 24px);
+    line-height: 1.35;
+    text-align: center;
+  }
+  .introduccion p, .introduccion #textoAzul{
+    font-size: clamp(14px, 3.8vw, 18px);
+  }
+  #textoAzul{
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  /* Carrusel de fotos: pasar a grilla 1 columna con separación */
+  .container-mid-photos{ padding: 8px 12px; }
+  .images-box{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .carousel{
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  }
+  .carousel img{
+    display: block;
+    width: 100%; height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  /* Texto intermedio */
+  .mid-inner-info .text-inner{
+    padding: 0 16px;
+    font-size: clamp(14px, 3.8vw, 18px);
+    line-height: 1.6;
+  }
+
+  /* Sección parallax: apilar y atenuar efecto en mobile */
+  .container-column-scroll{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 12px;
+  }
+  .parallax-scroll{
+    position: relative;
+    min-height: auto;
+    padding: 8px 0;
+  }
+  .parallax-scroll .elevator{
+    position: relative;
+    transform: none !important;
+  }
+  .parallax-scroll .elevator img{
+    width: 100%; height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  }
+  .elevator-text{
+    text-align: center;
+    margin-top: 8px;
+  }
+  .parrallax-text{
+    font-size: clamp(16px, 4.5vw, 20px);
+    line-height: 1.3;
+  }
+
+  /* Botón “Atrápame” de YouTube: que no estorbe y sea clickable */
+  .container-how-to .extraction{
+    padding: 0 16px 32px;
+    text-align: center;
+  }
+  #botonMovible{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: #ff0033;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(255,0,51,.25);
+    position: relative; /* desactivar absolute si lo usabas en desktop */
+  }
+  #botonMovible .youtube-icon{
+    width: 20px; height: 14px;
+    background: #fff; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox=\"0 0 24 24\"><path fill=\"black\" d=\"M10 15l5.19-3L10 9v6z\"/></svg>') no-repeat center / contain;
+  }
+
+  /* Footer más respirable */
+  .footer-content{ padding: 0 16px; }
+  .footer-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .footer-bottom{
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/* Teléfonos chicos */
+@media (max-width: 600px){
+  .container-top{ padding-top: 84px; }
+  .images-box{ gap: 12px; }
+  .carousel img{ aspect-ratio: 3 / 2; }
+  .parallax-scroll .elevator img{ aspect-ratio: 3 / 2; }
+  #botonMovible{ padding: 10px 14px; }
+}
+
+/* Accesibilidad: si el usuario prefiere menos movimiento, suavizamos */
+@media (prefers-reduced-motion: reduce){
+  .navbar, .menu a, .carousel img, .parallax-scroll .elevator { 
+    transition: none !important; animation: none !important;
+  }
+}
