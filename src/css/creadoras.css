@@ -1028,5 +1028,117 @@ spline-viewer.robot-3d {
 
   }
 }
+/* =========================================================
+   CREATOR SECTION – RESPONSIVE OVERRIDES (append-only)
+   Pega este bloque al final de creadoras.css
+   ========================================================= */
 
+/* Tablet y mobile */
+@media (max-width: 900px) {
+  /* Contenedor fluye y ajusta altura */
+  .stack-area{
+    display: block !important;
+    height: auto !important;
+    padding: 24px 16px;
+    overflow-x: hidden;
+  }
+
+  /* Columnas sin sticky ni alturas fijas */
+  .stack-area .left,
+  .stack-area .right{
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    flex-basis: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Si en tu CSS previo ocultabas la derecha en mobile, la forzamos visible */
+  .stack-area .right{
+    display: block !important;
+  }
+
+  /* Títulos y textos fluidos */
+  .stack-area .title{
+    width: auto !important;
+    font-size: clamp(28px, 7vw, 48px) !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+    margin: 0 auto 12px !important;
+  }
+  .stack-area .sub-title{
+    width: auto !important;
+    font-size: clamp(14px, 3.8vw, 18px) !important;
+    margin: 12px auto 20px !important;
+    text-align: center !important;
+    max-width: 680px !important;
+  }
+  .stack-area .sub-title button{
+    padding: 12px 20px !important;
+  }
+
+  /* Tarjetas apiladas (sin absolute ni centrado fijo) */
+  .stack-area .card{
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+
+    width: min(520px, 100%) !important;
+    height: auto !important;
+    margin: 14px auto !important;      /* centradas y separadas */
+    padding: 14px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12) !important;
+    transform: none !important;         /* por si había transforms previos */
+  }
+
+  /* Imagen consistente por ratio (evita saltos de layout) */
+  .stack-area .card img{
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+
+  /* Texto de tarjeta más cómodo en móvil */
+  .stack-area .sub{ font-size: 1rem !important; }
+  .stack-area .content{ font-size: 0.98rem !important; line-height: 1.45 !important; }
+
+  /* Quitar brillos/gradientes pesados en móvil para rendimiento */
+  .stack-area .card::before,
+  .stack-area .card::after{
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Spline/robot – que no tape ni se desborde */
+  .robot-3d{
+    position: static !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    height: 320px !important;
+    margin: 16px auto 0 !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+  }
+  .welcome-content{ margin-top: 2rem !important; }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 480px){
+  .stack-area{ padding: 16px 12px !important; }
+  .stack-area .card{ border-radius: 14px !important; padding: 12px !important; }
+  .stack-area .card img{ border-radius: 10px !important; aspect-ratio: 3 / 2 !important; }
+}
+
+/* Accesibilidad: si el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce){
+  .stack-area .card,
+  .stack-area .title,
+  .stack-area .sub-title,
+  .robot-3d{
+    transition: none !important;
+    animation: none !important;
+  }
+}
 
