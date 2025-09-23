@@ -35,19 +35,27 @@
 
   // Desactivar navegación manual (click en menú)
   document.querySelectorAll('.reinos a').forEach((link, index) => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (index <= reinoActualIndex) {
-        mostrarReinoActual();
-      } else {
-        Swal.fire({
-          icon: "info",
-          title: "¡Ups!",
-          text: "Primero responde las preguntas anteriores antes de avanzar.",
-        });
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (index <= reinoActualIndex) {
+      mostrarReinoActual();
+
+      // Hacer scroll suave hasta el formulario/pregunta
+      const reinoId = reinosOrden[index];
+      const seccion = document.getElementById(reinoId);
+      if (seccion) {
+        seccion.scrollIntoView({ behavior: "smooth" });
       }
-    });
+
+    } else {
+      Swal.fire({
+        icon: "info",
+        title: "¡Ups!",
+        text: "Primero responde las preguntas anteriores antes de avanzar.",
+      });
+    }
   });
+});
 
   // Manejo de respuestas
   function manejarRespuesta(elemento, esCorrecta) {
